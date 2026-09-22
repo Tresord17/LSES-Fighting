@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+/* La variante dark: de Tailwind suit l'attribut data-theme posé sur <html>. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ------------------------------------------------------------------
+   Jetons de couleur LSES Fighting (maquette « Identité et thèmes »)
+   Le doré et le rouge sang gardent le même aplat dans les deux thèmes ;
+   seules leurs déclinaisons « texte » changent pour tenir le seuil AA.
+   ------------------------------------------------------------------ */
+:root {
+  --background: #f6f7f8;
+  --surface: #ffffff;
+  --line: #dfe3e7;
+  --line-strong: #c3c9d0;
+  --foreground: #14171a;
+  --muted: #5a626b;
+  --subtle: #69717a; /* #6b737c de la maquette, assombri pour tenir 4,5:1 sur le fond */
+
+  --gold: #c0870a; /* aplat : boutons, filets, repères */
+  --gold-ink: #8a6108; /* texte et liens dorés */
+  --gold-ink-hover: #6b4a06;
+  --on-gold: #0b0c0e; /* libellé posé sur le doré : toujours presque noir */
+
+  --blood: #9e1b16; /* urgence et refus uniquement */
+  --blood-ink: #8e1f1a;
+  --admin: #2560b8; /* back-office uniquement */
+  --success: #1e7a52;
+
+  --hatch-a: #eceef0; /* motif des visuels en attente de photo */
+  --hatch-b: #e5e8eb;
+  --hero-fade: 246 247 248; /* --background en RVB, pour les dégradés */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: #0b0c0e;
+    --surface: #141619;
+    --line: #23272d;
+    --line-strong: #3a4048;
+    --foreground: #f2f3f5;
+    --muted: #9ba1aa;
+    --subtle: #8a9099;
+    --gold-ink: #dda82c;
+    --gold-ink-hover: #efc97a;
+    --blood-ink: #e2685e;
+    --admin: #5b92e8;
+    --success: #48a67c;
+    --hatch-a: #17191d;
+    --hatch-b: #131518;
+    --hero-fade: 11 12 14;
+  }
+}
+
+:root[data-theme="dark"] {
+  --background: #0b0c0e;
+  --surface: #141619;
+  --line: #23272d;
+  --line-strong: #3a4048;
+  --foreground: #f2f3f5;
+  --muted: #9ba1aa;
+  --subtle: #8a9099;
+  --gold-ink: #dda82c;
+  --gold-ink-hover: #efc97a;
+  --blood-ink: #e2685e;
+  --admin: #5b92e8;
+  --success: #48a67c;
+  --hatch-a: #17191d;
+  --hatch-b: #131518;
+  --hero-fade: 11 12 14;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-gold: var(--gold);
+  --color-gold-ink: var(--gold-ink);
+  --color-gold-ink-hover: var(--gold-ink-hover);
+  --color-on-gold: var(--on-gold);
+  --color-blood: var(--blood);
+  --color-blood-ink: var(--blood-ink);
+  --color-admin: var(--admin);
+  --color-success: var(--success);
+
+  --font-sans: var(--font-plex-sans), "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-saira), "Arial Narrow", sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+}
+
+/* Motif hachuré des maquettes, en attendant les vraies photos */
+@utility hatch {
+  background: repeating-linear-gradient(135deg, var(--hatch-a) 0 11px, var(--hatch-b) 11px 22px);
+}
+
+/* Petites capitales espacées en police mono (sur-titres, métadonnées) */
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--gold);
+    color: var(--on-gold);
+  }
+}

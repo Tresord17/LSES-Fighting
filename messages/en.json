@@ -1,0 +1,101 @@
+{
+  "meta": {
+    "title": "LSES Fighting — Sambo and MMA in Cameroon",
+    "description": "The athletes, coaches and dojos keeping sambo and MMA alive in Cameroon."
+  },
+  "a11y": {
+    "skipToContent": "Skip to content",
+    "home": "LSES Fighting, home",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mainNav": "Main navigation"
+  },
+  "nav": {
+    "sambo": "Sambo",
+    "mma": "MMA",
+    "athletes": "Athletes",
+    "coaches": "Coaches",
+    "news": "News",
+    "contact": "Contact",
+    "login": "Log in",
+    "join": "Join"
+  },
+  "language": {
+    "label": "Language",
+    "fr": "Français",
+    "en": "English"
+  },
+  "theme": {
+    "label": "Display theme",
+    "system": "System",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Sambo · MMA · Cameroon",
+      "title": "La sueur épargne le sang",
+      "lead": "The athletes, coaches and dojos keeping sambo and MMA alive in Cameroon.",
+      "primary": "Explore the disciplines",
+      "secondary": "Join",
+      "emblem": "LSES Fighting emblem"
+    },
+    "disciplines": {
+      "title": "The disciplines",
+      "sambo": "Wrestling, throws and submissions",
+      "mma": "Striking, wrestling and ground fighting"
+    },
+    "athletes": {
+      "title": "Wearing the colours",
+      "all": "All"
+    },
+    "news": {
+      "title": "News"
+    },
+    "cta": {
+      "title": "Athlete or coach?",
+      "text": "Create your public profile. A coach reviews it, then it goes live and can be shared.",
+      "button": "Create my profile"
+    }
+  },
+  "footer": {
+    "legal": "Legal notice",
+    "privacy": "Privacy",
+    "dojos": "Dojos: Yaoundé (École des Postes) · Oldham (United Kingdom)"
+  },
+  "comingSoon": {
+    "eyebrow": "In development",
+    "text": "This page is part of the next development step.",
+    "back": "Back to home"
+  },
+  "notFound": {
+    "eyebrow": "Error 404",
+    "title": "Page not found",
+    "text": "The requested address does not exist or has moved.",
+    "back": "Back to home"
+  },
+  "errors": {
+    "not_authenticated": "Please log in to continue.",
+    "forbidden": "You don't have permission to do this.",
+    "role_not_allowed": "This role cannot be selected.",
+    "role_already_chosen": "This account's role is already set.",
+    "profile_not_found": "Account not found.",
+    "not_an_athlete": "This account has no athlete profile.",
+    "not_a_coach": "This account has no coach profile.",
+    "invalid_status": "This profile is already awaiting review or live.",
+    "profile_incomplete": "Fill in the required fields before submitting your profile.",
+    "consent_required": "Publication consent is required to submit your profile.",
+    "identity_locked": "This field can no longer be changed once the profile is published.",
+    "invalid_birth_date": "The date of birth is not valid.",
+    "invalid_photo_path": "This photo cannot be used.",
+    "coach_not_approved": "This coach is not listed yet.",
+    "request_not_found": "Request not found.",
+    "request_closed": "This request has already been handled.",
+    "request_escalated": "The seven-day deadline has passed: the decision now rests with the general supervisor.",
+    "reason_required": "Please give a reason for the refusal.",
+    "guardian_attestation_required": "Minor athlete: confirm you have received written consent from a legal guardian.",
+    "nothing_to_review": "This profile is not flagged as modified.",
+    "profile_not_published": "No live profile matches.",
+    "unknown": "Something went wrong. Please try again in a moment."
+  }
+}

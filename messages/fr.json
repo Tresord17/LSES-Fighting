@@ -1,0 +1,101 @@
+{
+  "meta": {
+    "title": "LSES Fighting — Sambo et MMA au Cameroun",
+    "description": "Les athlètes, les coachs et les dojos qui font vivre le sambo et le MMA au Cameroun."
+  },
+  "a11y": {
+    "skipToContent": "Aller au contenu",
+    "home": "LSES Fighting, accueil",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "mainNav": "Navigation principale"
+  },
+  "nav": {
+    "sambo": "Sambo",
+    "mma": "MMA",
+    "athletes": "Athlètes",
+    "coaches": "Coachs",
+    "news": "Actualités",
+    "contact": "Contact",
+    "login": "Connexion",
+    "join": "Rejoindre"
+  },
+  "language": {
+    "label": "Langue",
+    "fr": "Français",
+    "en": "English"
+  },
+  "theme": {
+    "label": "Thème d'affichage",
+    "system": "Système",
+    "light": "Clair",
+    "dark": "Sombre"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Sambo · MMA · Cameroun",
+      "title": "La sueur épargne le sang",
+      "lead": "Les athlètes, les coachs et les dojos qui font vivre le sambo et le MMA au Cameroun.",
+      "primary": "Découvrir les disciplines",
+      "secondary": "Rejoindre",
+      "emblem": "Emblème LSES Fighting"
+    },
+    "disciplines": {
+      "title": "Les disciplines",
+      "sambo": "Lutte, projections et soumissions",
+      "mma": "Percussion, lutte et combat au sol"
+    },
+    "athletes": {
+      "title": "Ils portent les couleurs",
+      "all": "Tous"
+    },
+    "news": {
+      "title": "Actualités"
+    },
+    "cta": {
+      "title": "Athlète ou coach ?",
+      "text": "Créez votre fiche publique. Un coach la vérifie, puis elle est mise en ligne et devient partageable.",
+      "button": "Créer mon profil"
+    }
+  },
+  "footer": {
+    "legal": "Mentions légales",
+    "privacy": "Confidentialité",
+    "dojos": "Dojos : Yaoundé (École des Postes) · Oldham (Royaume-Uni)"
+  },
+  "comingSoon": {
+    "eyebrow": "En cours de développement",
+    "text": "Cette page fait partie de la prochaine étape du développement.",
+    "back": "Retour à l'accueil"
+  },
+  "notFound": {
+    "eyebrow": "Erreur 404",
+    "title": "Page introuvable",
+    "text": "L'adresse demandée n'existe pas ou a été déplacée.",
+    "back": "Retour à l'accueil"
+  },
+  "errors": {
+    "not_authenticated": "Connectez-vous pour continuer.",
+    "forbidden": "Vous n'avez pas les droits nécessaires pour cette action.",
+    "role_not_allowed": "Ce rôle ne peut pas être choisi.",
+    "role_already_chosen": "Le rôle de ce compte est déjà défini.",
+    "profile_not_found": "Compte introuvable.",
+    "not_an_athlete": "Ce compte n'a pas de fiche d'athlète.",
+    "not_a_coach": "Ce compte n'a pas de fiche de coach.",
+    "invalid_status": "Cette fiche est déjà en attente de vérification ou en ligne.",
+    "profile_incomplete": "Complétez les champs obligatoires avant de soumettre votre fiche.",
+    "consent_required": "L'accord de publication est nécessaire pour soumettre votre fiche.",
+    "identity_locked": "Ce champ ne peut plus être modifié une fois la fiche publiée.",
+    "invalid_birth_date": "La date de naissance n'est pas valide.",
+    "invalid_photo_path": "Cette photo ne peut pas être utilisée.",
+    "coach_not_approved": "Ce coach n'est pas encore référencé.",
+    "request_not_found": "Demande introuvable.",
+    "request_closed": "Cette demande a déjà été traitée.",
+    "request_escalated": "Le délai de sept jours est dépassé : la décision revient au superviseur général.",
+    "reason_required": "Indiquez un motif pour refuser.",
+    "guardian_attestation_required": "Athlète mineur : attestez avoir reçu l'autorisation écrite d'un responsable légal.",
+    "nothing_to_review": "Cette fiche n'est pas signalée comme modifiée.",
+    "profile_not_published": "Aucune fiche en ligne ne correspond.",
+    "unknown": "Une erreur inattendue est survenue. Réessayez dans un instant."
+  }
+}
