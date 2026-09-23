@@ -18,7 +18,8 @@
     "news": "News",
     "contact": "Contact",
     "login": "Log in",
-    "join": "Join"
+    "join": "Join",
+    "account": "My account"
   },
   "language": {
     "label": "Language",
@@ -97,5 +98,128 @@
     "nothing_to_review": "This profile is not flagged as modified.",
     "profile_not_published": "No live profile matches.",
     "unknown": "Something went wrong. Please try again in a moment."
+  },
+  "auth": {
+    "signup": {
+      "eyebrow": "Create an account",
+      "title": "Join LSES Fighting",
+      "lead": "Your profile goes public once a listed coach has reviewed it.",
+      "roleLabel": "I'm signing up as",
+      "athlete": "Athlete",
+      "coach": "Coach",
+      "consent": "I agree that my profile information may be published on the site, and I confirm it is about me.",
+      "submit": "Create my account",
+      "haveAccount": "Already registered?",
+      "login": "Log in",
+      "nextTitle": "What happens next",
+      "step1": "You sign up on this page.",
+      "step2": "You fill in your profile on the next screen.",
+      "step3Athlete": "A coach reviews your profile within seven days.",
+      "step3Coach": "The general supervisor approves your coach account.",
+      "checkEmailTitle": "Check your inbox",
+      "checkEmailText": "If {email} can be used, a confirmation link has just been sent to it. Open it to activate your account, then fill in your profile.",
+      "checkEmailHint": "Nothing after a few minutes? Check your spam folder."
+    },
+    "login": {
+      "eyebrow": "Log in",
+      "title": "Welcome back",
+      "lead": "Log in to manage your profile or handle review requests.",
+      "submit": "Log in",
+      "forgot": "Forgot your password?",
+      "noAccount": "No account yet?",
+      "signup": "Create an account"
+    },
+    "reset": {
+      "eyebrow": "Forgot password",
+      "title": "Reset your password",
+      "lead": "Enter your account email: we will send you a link to choose a new password.",
+      "submit": "Send the link",
+      "sentTitle": "Link sent",
+      "sentText": "If an account exists for {email}, it will receive a link valid for one hour.",
+      "back": "Back to log in"
+    },
+    "newPassword": {
+      "eyebrow": "New password",
+      "title": "Choose a new password",
+      "confirm": "Confirm password",
+      "submit": "Save password"
+    },
+    "welcome": {
+      "eyebrow": "Last step",
+      "title": "Are you an athlete or a coach?",
+      "lead": "This choice is final: it sets your profile form and review process.",
+      "athleteText": "I practise sambo or MMA and want my public profile.",
+      "coachText": "I train athletes and want to be able to review their profiles.",
+      "submit": "Continue"
+    },
+    "fields": {
+      "email": "Email address",
+      "emailPlaceholder": "you@example.com",
+      "password": "Password",
+      "passwordHint": "At least 10 characters",
+      "showPassword": "Show password",
+      "hidePassword": "Hide password"
+    },
+    "google": "Continue with Google",
+    "or": "or",
+    "linkErrors": {
+      "oauth": "Signing in with Google did not complete. Please try again.",
+      "lien": "This link has expired or was already used. Request a new one.",
+      "appareil": "Open this link in the browser you used for the request, or request a new one."
+    },
+    "errors": {
+      "invalid_email": "This email address is not valid.",
+      "password_required": "Enter your password.",
+      "password_too_short": "The password must be at least 10 characters long.",
+      "password_too_long": "The password must not exceed 72 characters.",
+      "passwords_mismatch": "The two passwords do not match.",
+      "role_required": "Choose athlete or coach.",
+      "consent_required": "Tick the box to accept the publication of your profile.",
+      "invalid_credentials": "Incorrect email or password.",
+      "email_not_confirmed": "Please confirm your email address with the link you received first.",
+      "weak_password": "This password is too weak. Choose a longer or more varied one.",
+      "same_password": "The new password must differ from the old one.",
+      "rate_limited": "Too many attempts. Wait a few minutes before trying again.",
+      "email_not_authorized": "Email sending is not configured for this address yet.",
+      "signup_disabled": "Sign-ups are temporarily closed.",
+      "session_expired": "Your session has expired. Start again from the link in your email.",
+      "link_expired": "This link has expired or was already used.",
+      "link_other_device": "Open the link in the browser you used for the request.",
+      "not_configured": "Sign-in is not configured yet (missing Supabase variables).",
+      "unknown": "Something went wrong. Please try again in a moment."
+    }
+  },
+  "account": {
+    "title": "My account",
+    "hello": "Hello",
+    "confirmed": "Your email address is confirmed. Welcome!",
+    "passwordChanged": "Your password has been changed.",
+    "signOut": "Log out",
+    "roles": {
+      "athlete": "Athlete",
+      "coach": "Coach",
+      "superviseur": "General supervisor"
+    },
+    "profileCard": "My profile",
+    "status": {
+      "draft": "Draft",
+      "pending": "Awaiting review",
+      "approved": "Live",
+      "rejected": "Needs changes"
+    },
+    "statusText": {
+      "draft": "Your profile is not visible yet. Fill it in, then submit it for review.",
+      "pendingAthlete": "A listed coach is reviewing your profile. Expect an answer by {date} at the latest.",
+      "pendingCoach": "The general supervisor is reviewing your coach account.",
+      "approvedAthlete": "Your profile is published on the site.",
+      "approvedCoach": "Your account is approved: you can review athlete profiles.",
+      "rejected": "Your profile was declined. Correct it, then submit it again.",
+      "reason": "Reason: {reason}",
+      "modified": "Your coach will review your latest changes."
+    },
+    "editProfile": "Fill in my profile",
+    "viewProfile": "Edit my profile",
+    "reviews": "Requests to review",
+    "admin": "Supervisor area"
   }
 }

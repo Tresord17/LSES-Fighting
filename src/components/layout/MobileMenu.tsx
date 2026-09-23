@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { NAV_ITEMS } from "@/lib/site";
 import { CloseIcon, MenuIcon } from "@/components/ui/icons";
-import { ButtonLink } from "@/components/ui/ButtonLink";
+import { AccountNav } from "@/components/account/AccountNav";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 
 export function MobileMenu() {
@@ -71,12 +71,7 @@ export function MobileMenu() {
           </nav>
 
           <div className="mt-6 flex gap-2.5">
-            <ButtonLink href="/inscription" className="flex-1" onClick={() => setOpen(false)}>
-              {t("nav.join")}
-            </ButtonLink>
-            <ButtonLink href="/connexion" variant="outline" onClick={() => setOpen(false)}>
-              {t("nav.login")}
-            </ButtonLink>
+            <AccountNav variant="menu" onNavigate={() => setOpen(false)} />
           </div>
 
           <div className="mt-8 flex flex-col gap-3">

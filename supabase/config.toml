@@ -242,6 +242,17 @@ otp_expiry = 3600
 # admin_email = "admin@email.com"
 # sender_name = "Admin"
 
+# Modèles d'e-mails du projet (bilingues selon la langue choisie à l'inscription).
+# En local, la CLI les lit ici ; sur le projet Supabase, les coller dans
+# Authentication > Emails > Templates (voir README).
+[auth.email.template.confirmation]
+subject = "Confirmez votre adresse / Confirm your email — LSES Fighting"
+content_path = "./supabase/templates/confirmation.html"
+
+[auth.email.template.recovery]
+subject = "Nouveau mot de passe / New password — LSES Fighting"
+content_path = "./supabase/templates/recovery.html"
+
 # Uncomment to customize email template
 # [auth.email.template.invite]
 # subject = "You have been invited"
@@ -318,6 +329,14 @@ max_frequency = "5s"
 # Use an external OAuth provider. The full list of providers are: `apple`, `azure`, `bitbucket`,
 # `discord`, `facebook`, `github`, `gitlab`, `google`, `keycloak`, `linkedin_oidc`, `notion`, `twitch`,
 # `twitter`, `x`, `slack`, `spotify`, `workos`, `zoom`.
+# Connexion Google, pour un Supabase local uniquement (le projet en ligne se
+# configure dans Authentication > Sign In / Providers > Google).
+[auth.external.google]
+enabled = false
+client_id = ""
+secret = "env(SUPABASE_AUTH_EXTERNAL_GOOGLE_SECRET)"
+skip_nonce_check = true
+
 [auth.external.apple]
 enabled = false
 client_id = ""

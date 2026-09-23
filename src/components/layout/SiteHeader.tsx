@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { NAV_ITEMS } from "@/lib/site";
-import { ButtonLink } from "@/components/ui/ButtonLink";
+import { AccountNav } from "@/components/account/AccountNav";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { MobileMenu } from "./MobileMenu";
 import { ThemeSwitcher } from "./ThemeSwitcher";
@@ -33,16 +33,8 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           <LanguageSwitcher />
           <ThemeSwitcher variant="compact" className="hidden lg:flex" />
-          <Link
-            href="/connexion"
-            className="hidden text-sm font-semibold text-muted hover:text-foreground lg:block"
-          >
-            {t("nav.login")}
-          </Link>
-          <div className="hidden lg:block">
-            <ButtonLink href="/inscription" size="sm">
-              {t("nav.join")}
-            </ButtonLink>
+          <div className="hidden items-center gap-3 lg:flex">
+            <AccountNav variant="header" />
           </div>
           <div className="lg:hidden">
             <MobileMenu />

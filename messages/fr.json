@@ -18,7 +18,8 @@
     "news": "Actualités",
     "contact": "Contact",
     "login": "Connexion",
-    "join": "Rejoindre"
+    "join": "Rejoindre",
+    "account": "Mon espace"
   },
   "language": {
     "label": "Langue",
@@ -97,5 +98,128 @@
     "nothing_to_review": "Cette fiche n'est pas signalée comme modifiée.",
     "profile_not_published": "Aucune fiche en ligne ne correspond.",
     "unknown": "Une erreur inattendue est survenue. Réessayez dans un instant."
+  },
+  "auth": {
+    "signup": {
+      "eyebrow": "Créer un compte",
+      "title": "Rejoindre LSES Fighting",
+      "lead": "Votre fiche devient publique une fois vérifiée par un coach référencé.",
+      "roleLabel": "Je m'inscris comme",
+      "athlete": "Athlète",
+      "coach": "Coach",
+      "consent": "J'accepte que les informations de mon profil soient publiées sur le site, et je confirme qu'elles me concernent.",
+      "submit": "Créer mon compte",
+      "haveAccount": "Déjà inscrit ?",
+      "login": "Se connecter",
+      "nextTitle": "Ce qui se passe ensuite",
+      "step1": "Vous vous inscrivez sur cette page.",
+      "step2": "Vous renseignez votre profil, à l'écran suivant.",
+      "step3Athlete": "Un coach vérifie votre fiche sous sept jours.",
+      "step3Coach": "Le superviseur général valide votre compte de coach.",
+      "checkEmailTitle": "Vérifiez votre boîte mail",
+      "checkEmailText": "Si l'adresse {email} peut être utilisée, un lien de confirmation vient d'y être envoyé. Ouvrez-le pour activer votre compte, puis renseignez votre profil.",
+      "checkEmailHint": "Rien reçu après quelques minutes ? Regardez dans les courriers indésirables."
+    },
+    "login": {
+      "eyebrow": "Connexion",
+      "title": "Content de vous revoir",
+      "lead": "Connectez-vous pour gérer votre fiche ou traiter les demandes.",
+      "submit": "Se connecter",
+      "forgot": "Mot de passe oublié ?",
+      "noAccount": "Pas encore de compte ?",
+      "signup": "Créer un compte"
+    },
+    "reset": {
+      "eyebrow": "Mot de passe oublié",
+      "title": "Réinitialiser le mot de passe",
+      "lead": "Indiquez l'adresse de votre compte : nous vous enverrons un lien pour choisir un nouveau mot de passe.",
+      "submit": "Envoyer le lien",
+      "sentTitle": "Lien envoyé",
+      "sentText": "Si un compte existe pour {email}, il recevra un lien valable une heure.",
+      "back": "Retour à la connexion"
+    },
+    "newPassword": {
+      "eyebrow": "Nouveau mot de passe",
+      "title": "Choisir un nouveau mot de passe",
+      "confirm": "Confirmer le mot de passe",
+      "submit": "Enregistrer le mot de passe"
+    },
+    "welcome": {
+      "eyebrow": "Dernière étape",
+      "title": "Vous êtes athlète ou coach ?",
+      "lead": "Ce choix est définitif : il détermine le formulaire de profil et le circuit de vérification.",
+      "athleteText": "Je pratique le sambo ou le MMA et je veux ma fiche publique.",
+      "coachText": "J'encadre des athlètes et je veux pouvoir vérifier leurs fiches.",
+      "submit": "Continuer"
+    },
+    "fields": {
+      "email": "Adresse électronique",
+      "emailPlaceholder": "vous@exemple.com",
+      "password": "Mot de passe",
+      "passwordHint": "Au moins 10 caractères",
+      "showPassword": "Afficher le mot de passe",
+      "hidePassword": "Masquer le mot de passe"
+    },
+    "google": "Continuer avec Google",
+    "or": "ou",
+    "linkErrors": {
+      "oauth": "La connexion avec Google n'a pas abouti. Réessayez.",
+      "lien": "Ce lien a expiré ou a déjà servi. Demandez-en un nouveau.",
+      "appareil": "Ouvrez ce lien dans le navigateur qui a servi à la demande, ou demandez-en un nouveau."
+    },
+    "errors": {
+      "invalid_email": "Cette adresse électronique n'est pas valide.",
+      "password_required": "Saisissez votre mot de passe.",
+      "password_too_short": "Le mot de passe doit contenir au moins 10 caractères.",
+      "password_too_long": "Le mot de passe ne doit pas dépasser 72 caractères.",
+      "passwords_mismatch": "Les deux mots de passe ne correspondent pas.",
+      "role_required": "Choisissez athlète ou coach.",
+      "consent_required": "Cochez la case pour accepter la publication de votre profil.",
+      "invalid_credentials": "Adresse ou mot de passe incorrect.",
+      "email_not_confirmed": "Confirmez d'abord votre adresse avec le lien reçu par e-mail.",
+      "weak_password": "Ce mot de passe est trop faible. Choisissez-en un plus long ou plus varié.",
+      "same_password": "Le nouveau mot de passe doit être différent de l'ancien.",
+      "rate_limited": "Trop de tentatives. Patientez quelques minutes avant de réessayer.",
+      "email_not_authorized": "L'envoi d'e-mails n'est pas encore configuré pour cette adresse.",
+      "signup_disabled": "Les inscriptions sont momentanément fermées.",
+      "session_expired": "Votre session a expiré. Recommencez depuis le lien reçu par e-mail.",
+      "link_expired": "Ce lien a expiré ou a déjà servi.",
+      "link_other_device": "Ouvrez le lien dans le navigateur qui a servi à la demande.",
+      "not_configured": "La connexion n'est pas encore configurée (variables Supabase manquantes).",
+      "unknown": "Une erreur inattendue est survenue. Réessayez dans un instant."
+    }
+  },
+  "account": {
+    "title": "Mon espace",
+    "hello": "Bonjour",
+    "confirmed": "Votre adresse est confirmée. Bienvenue !",
+    "passwordChanged": "Votre mot de passe a été modifié.",
+    "signOut": "Se déconnecter",
+    "roles": {
+      "athlete": "Athlète",
+      "coach": "Coach",
+      "superviseur": "Superviseur général"
+    },
+    "profileCard": "Ma fiche",
+    "status": {
+      "draft": "Brouillon",
+      "pending": "En attente de vérification",
+      "approved": "En ligne",
+      "rejected": "À corriger"
+    },
+    "statusText": {
+      "draft": "Votre fiche n'est pas encore visible. Complétez votre profil, puis soumettez-le pour vérification.",
+      "pendingAthlete": "Un coach référencé vérifie votre fiche. Réponse attendue au plus tard le {date}.",
+      "pendingCoach": "Le superviseur général examine votre compte de coach.",
+      "approvedAthlete": "Votre fiche est publiée sur le site.",
+      "approvedCoach": "Votre compte est validé : vous pouvez vérifier les fiches des athlètes.",
+      "rejected": "Votre fiche a été refusée. Corrigez-la, puis soumettez-la de nouveau.",
+      "reason": "Motif : {reason}",
+      "modified": "Vos dernières modifications seront relues par votre coach."
+    },
+    "editProfile": "Compléter mon profil",
+    "viewProfile": "Modifier ma fiche",
+    "reviews": "Demandes à traiter",
+    "admin": "Espace superviseur"
   }
 }

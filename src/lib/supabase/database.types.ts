@@ -7,6 +7,11 @@ export type Json =
   | Json[]
 
 export type Database = {
+  // Allows to automatically instantiate createClient with right options
+  // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
+  __InternalSupabase: {
+    PostgrestVersion: "14.5"
+  }
   public: {
     Tables: {
       athlete_private: {
@@ -149,7 +154,7 @@ export type Database = {
           actor_label: string | null
           automatic: boolean
           created_at: string
-          details: NonNullable<Json>
+          details: Json
           id: number
           target_id: string | null
           target_label: string | null
@@ -161,7 +166,7 @@ export type Database = {
           actor_label?: string | null
           automatic?: boolean
           created_at?: string
-          details?: NonNullable<Json>
+          details?: Json
           id?: never
           target_id?: string | null
           target_label?: string | null
@@ -173,7 +178,7 @@ export type Database = {
           actor_label?: string | null
           automatic?: boolean
           created_at?: string
-          details?: NonNullable<Json>
+          details?: Json
           id?: never
           target_id?: string | null
           target_label?: string | null
@@ -540,7 +545,7 @@ export type Database = {
         Returns: undefined
       }
       pending_athlete_ages: {
-        Args: Record<PropertyKey, never>
+        Args: never
         Returns: {
           age: number
           athlete_id: string
@@ -570,14 +575,8 @@ export type Database = {
         }
         Returns: undefined
       }
-      submit_athlete_profile: {
-        Args: Record<PropertyKey, never>
-        Returns: string
-      }
-      submit_coach_profile: {
-        Args: Record<PropertyKey, never>
-        Returns: string
-      }
+      submit_athlete_profile: { Args: never; Returns: string }
+      submit_coach_profile: { Args: never; Returns: string }
       withdraw_profile: {
         Args: { p_profile_id: string; p_reason: string }
         Returns: undefined
@@ -734,4 +733,3 @@ export const Constants = {
     },
   },
 } as const
-

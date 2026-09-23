@@ -5,3 +5,4 @@ public
 src/fonts
 supabase/.temp
 src/lib/supabase/database.types.ts
+supabase/templates
