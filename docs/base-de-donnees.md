@@ -1,6 +1,6 @@
 # Base de données LSES Fighting
 
-La base repose sur PostgreSQL, hébergé par Supabase. Elle est décrite entièrement par quatre migrations SQL (`supabase/migrations`), ce qui permet de la reconstruire à l'identique et de suivre chaque évolution dans Git.
+La base repose sur PostgreSQL, hébergé par Supabase. Elle est décrite entièrement par cinq migrations SQL (`supabase/migrations`), ce qui permet de la reconstruire à l'identique et de suivre chaque évolution dans Git.
 
 | Migration                       | Contenu                                                               |
 | ------------------------------- | --------------------------------------------------------------------- |
@@ -8,6 +8,7 @@ La base repose sur PostgreSQL, hébergé par Supabase. Elle est décrite entièr
 | `…100100_regles_acces`          | Privilèges, sécurité au niveau des lignes (RLS), contrôles d'écriture |
 | `…100200_circuit_de_validation` | Inscription, soumission, décisions, escalade automatique au 7e jour   |
 | `…100300_stockage`              | Buckets de fichiers et leurs règles d'accès                           |
+| `…23100000_recherche_publique`  | Recherche sans accents dans les répertoires publics                   |
 
 ## Modèle de données
 
@@ -60,6 +61,8 @@ Toutes s'appellent avec `supabase.rpc(nom, paramètres)` par un utilisateur conn
 - `mark_athlete_reviewed(p_athlete_id)` : le coach confirme avoir relu une fiche modifiée.
 - `withdraw_profile(p_profile_id, p_reason)` : retrait d'une fiche par le superviseur.
 - `pending_athlete_ages()` : âge des athlètes en attente, sans révéler leur date de naissance.
+
+Deux fonctions de recherche sont en plus ouvertes aux visiteurs : `search_athletes(p_query)` et `search_coaches(p_query)`. Elles renvoient les fiches en ligne dont le nom, les prénoms, la ville (et le dojo pour un coach) contiennent chacun des mots saisis, sans tenir compte des accents ni des majuscules. Elles s'exécutent avec les droits de l'appelant, donc sous la RLS, et le site y ajoute ses filtres et sa pagination.
 
 ## Mesures de sécurité
 

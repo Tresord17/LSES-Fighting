@@ -46,6 +46,10 @@ export default async function AccountPage({
     .limit(1)
     .maybeSingle();
 
+  // Prénom de la fiche, sinon celui du compte Google
+  const firstName = card?.first_names?.split(/\s+/)[0] ?? user.firstName;
+  // Superviseur sans fiche de coach : pas de « Ma fiche » à compléter
+  const supervisorOnly = user.role === "superviseur" && !card;
   const status = card?.status ?? "draft";
   const modified = Boolean(card && "modified_since_review" in card && card.modified_since_review);
   const canReview = user.role === "superviseur" || (!isAthlete && status === "approved");
@@ -72,7 +76,7 @@ export default async function AccountPage({
           <p className="eyebrow tracking-[0.16em] text-gold-ink">{t(`roles.${user.role}`)}</p>
           <h1 className="font-display text-4xl leading-none font-extrabold uppercase md:text-5xl">
             {t("hello")}
-            {card?.first_names ? ` ${card.first_names}` : ""}
+            {firstName ? ` ${firstName}` : ""}
           </h1>
           {user.email && <p className="text-sm text-muted">{user.email}</p>}
         </div>
@@ -84,34 +88,47 @@ export default async function AccountPage({
         <FormAlert tone="success">{t("passwordChanged")}</FormAlert>
       )}
 
-      <article className="flex flex-col gap-4 border-l-3 border-gold bg-surface p-5 md:p-7">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <h2 className="font-display text-2xl font-bold uppercase">{t("profileCard")}</h2>
-          <StatusBadge status={status} label={t(`status.${status}`)} />
-        </div>
-        <p className="text-sm leading-relaxed text-muted">{statusText}</p>
-        {status === "rejected" && request?.decision_reason && (
-          <p className="text-sm text-blood-ink">
-            {t("statusText.reason", { reason: request.decision_reason })}
-          </p>
-        )}
-        {modified && <p className="text-sm text-gold-ink">{t("statusText.modified")}</p>}
-        <div className="flex flex-wrap gap-2.5">
-          <ButtonLink href="/mon-espace/profil">
-            {status === "draft" || status === "rejected" ? t("editProfile") : t("viewProfile")}
-          </ButtonLink>
-          {canReview && (
-            <ButtonLink href="/mon-espace/demandes" variant="outline">
-              {t("reviews")}
-            </ButtonLink>
-          )}
-          {user.role === "superviseur" && (
+      {supervisorOnly ? (
+        <article className="flex flex-col gap-4 border-l-3 border-admin-fill bg-surface p-5 md:p-7">
+          <h2 className="font-display text-2xl font-bold uppercase">{t("supervisorCard")}</h2>
+          <p className="text-sm leading-relaxed text-muted">{t("supervisorText")}</p>
+          <div className="flex flex-wrap gap-2.5">
+            <ButtonLink href="/mon-espace/demandes">{t("reviews")}</ButtonLink>
             <ButtonLink href="/mon-espace/superviseur" variant="outline">
               {t("admin")}
             </ButtonLink>
+          </div>
+        </article>
+      ) : (
+        <article className="flex flex-col gap-4 border-l-3 border-gold bg-surface p-5 md:p-7">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <h2 className="font-display text-2xl font-bold uppercase">{t("profileCard")}</h2>
+            <StatusBadge status={status} label={t(`status.${status}`)} />
+          </div>
+          <p className="text-sm leading-relaxed text-muted">{statusText}</p>
+          {status === "rejected" && request?.decision_reason && (
+            <p className="text-sm text-blood-ink">
+              {t("statusText.reason", { reason: request.decision_reason })}
+            </p>
           )}
-        </div>
-      </article>
+          {modified && <p className="text-sm text-gold-ink">{t("statusText.modified")}</p>}
+          <div className="flex flex-wrap gap-2.5">
+            <ButtonLink href="/mon-espace/profil">
+              {status === "draft" || status === "rejected" ? t("editProfile") : t("viewProfile")}
+            </ButtonLink>
+            {canReview && (
+              <ButtonLink href="/mon-espace/demandes" variant="outline">
+                {t("reviews")}
+              </ButtonLink>
+            )}
+            {user.role === "superviseur" && (
+              <ButtonLink href="/mon-espace/superviseur" variant="outline">
+                {t("admin")}
+              </ButtonLink>
+            )}
+          </div>
+        </article>
+      )}
     </section>
   );
 }

@@ -96,3 +96,42 @@ export const MailIcon = (p: IconProps) => (
     <path d="M3 7l9 6 9-6" />
   </Base>
 );
+
+export const SearchIcon = (p: IconProps) => (
+  <Base {...p}>
+    <circle cx="11" cy="11" r="7" />
+    <path d="M20 20l-4-4" />
+  </Base>
+);
+
+export const ChevronRightIcon = (p: IconProps) => (
+  <Base strokeWidth={2} {...p}>
+    <path d="M9 5l7 7-7 7" />
+  </Base>
+);
+
+export const ChevronDownIcon = (p: IconProps) => (
+  <Base strokeWidth={2.2} {...p}>
+    <path d="M6 9l6 6 6-6" />
+  </Base>
+);
+
+export const CheckIcon = (p: IconProps) => (
+  <Base strokeWidth={2.6} {...p}>
+    <path d="M5 12l5 5 9-10" />
+  </Base>
+);
+
+export const CopyIcon = (p: IconProps) => (
+  <Base strokeWidth={1.7} {...p}>
+    <rect x="9" y="9" width="12" height="12" />
+    <path d="M15 9V5H3v12h4" />
+  </Base>
+);
+
+export const InfoIcon = (p: IconProps) => (
+  <Base {...p}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 8h.01M11 12h1v5h1" />
+  </Base>
+);

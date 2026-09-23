@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
-import { NAV_ITEMS } from "@/lib/site";
+import { NAV_ITEMS, isActivePath } from "@/lib/site";
 import { CloseIcon, MenuIcon } from "@/components/ui/icons";
 import { AccountNav } from "@/components/account/AccountNav";
 import { ThemeSwitcher } from "./ThemeSwitcher";
@@ -56,17 +56,24 @@ export function MobileMenu() {
         >
           <nav aria-label={t("a11y.mainNav")}>
             <ul className="flex flex-col">
-              {NAV_ITEMS.map((item) => (
-                <li key={item.href} className="border-b border-line">
-                  <Link
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className="block py-3.5 font-display text-3xl font-bold uppercase"
-                  >
-                    {t(`nav.${item.key}`)}
-                  </Link>
-                </li>
-              ))}
+              {NAV_ITEMS.map((item) => {
+                const active = isActivePath(pathname, item.href);
+                return (
+                  <li key={item.href} className="border-b border-line">
+                    <Link
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      aria-current={active ? "page" : undefined}
+                      className={`flex items-center gap-3 py-3.5 font-display text-3xl font-bold uppercase ${
+                        active ? "text-gold-ink" : ""
+                      }`}
+                    >
+                      {active && <span aria-hidden="true" className="h-6 w-0.75 bg-gold" />}
+                      {t(`nav.${item.key}`)}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
 

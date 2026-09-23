@@ -575,6 +575,66 @@ export type Database = {
         }
         Returns: undefined
       }
+      search_athletes: {
+        Args: { p_query?: string }
+        Returns: {
+          bio: string | null
+          city: string | null
+          coach_id: string | null
+          created_at: string
+          discipline: Database["public"]["Enums"]["discipline"] | null
+          fights_count: number | null
+          first_names: string | null
+          id: string
+          last_name: string | null
+          modified_since_review: boolean
+          photo_path: string | null
+          practice_since: number | null
+          publication_consent_at: string | null
+          published_at: string | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          sex: Database["public"]["Enums"]["sex"] | null
+          slug: string | null
+          status: Database["public"]["Enums"]["review_status"]
+          updated_at: string
+          weight_class: string | null
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "athletes"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
+      search_coaches: {
+        Args: { p_query?: string }
+        Returns: {
+          approved_at: string | null
+          bio: string | null
+          city: string | null
+          created_at: string
+          disciplines: Database["public"]["Enums"]["discipline"][]
+          dojo_name: string | null
+          experience_years: number | null
+          first_names: string | null
+          id: string
+          last_name: string | null
+          photo_path: string | null
+          publication_consent_at: string | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          slug: string | null
+          status: Database["public"]["Enums"]["review_status"]
+          updated_at: string
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "coaches"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
       submit_athlete_profile: { Args: never; Returns: string }
       submit_coach_profile: { Args: never; Returns: string }
       withdraw_profile: {

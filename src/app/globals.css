@@ -9,6 +9,7 @@
    seules leurs déclinaisons « texte » changent pour tenir le seuil AA.
    ------------------------------------------------------------------ */
 :root {
+  color-scheme: light;
   --background: #f6f7f8;
   --surface: #ffffff;
   --line: #dfe3e7;
@@ -24,7 +25,8 @@
 
   --blood: #9e1b16; /* urgence et refus uniquement */
   --blood-ink: #8e1f1a;
-  --admin: #2560b8; /* back-office uniquement */
+  --admin: #2560b8; /* back-office uniquement : texte et filets */
+  --admin-fill: #2f6fd0; /* aplat bleu du back-office, libellé blanc (4,9:1) */
   --success: #1e7a52;
 
   --hatch-a: #eceef0; /* motif des visuels en attente de photo */
@@ -34,6 +36,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
+    color-scheme: dark;
     --background: #0b0c0e;
     --surface: #141619;
     --line: #23272d;
@@ -53,6 +56,7 @@
 }
 
 :root[data-theme="dark"] {
+  color-scheme: dark;
   --background: #0b0c0e;
   --surface: #141619;
   --line: #23272d;
@@ -85,6 +89,7 @@
   --color-blood: var(--blood);
   --color-blood-ink: var(--blood-ink);
   --color-admin: var(--admin);
+  --color-admin-fill: var(--admin-fill);
   --color-success: var(--success);
 
   --font-sans: var(--font-plex-sans), "Helvetica Neue", Arial, sans-serif;
@@ -118,6 +123,19 @@
   :focus-visible {
     outline: 2px solid var(--gold);
     outline-offset: 2px;
+  }
+
+  /* Liste ouverte d'un menu déroulant : sous Windows, Chromium et Brave
+     dessinent ce panneau eux-mêmes et ne suivent pas toujours le thème.
+     On lui impose les couleurs du thème pour qu'il reste lisible. */
+  select option,
+  select optgroup {
+    background-color: var(--surface);
+    color: var(--foreground);
+  }
+
+  select option:disabled {
+    color: var(--subtle);
   }
 
   ::selection {

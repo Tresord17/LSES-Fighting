@@ -11,6 +11,7 @@
     "mainNav": "Navigation principale"
   },
   "nav": {
+    "home": "Accueil",
     "sambo": "Sambo",
     "mma": "MMA",
     "athletes": "Athlètes",
@@ -97,7 +98,8 @@
     "guardian_attestation_required": "Athlète mineur : attestez avoir reçu l'autorisation écrite d'un responsable légal.",
     "nothing_to_review": "Cette fiche n'est pas signalée comme modifiée.",
     "profile_not_published": "Aucune fiche en ligne ne correspond.",
-    "unknown": "Une erreur inattendue est survenue. Réessayez dans un instant."
+    "unknown": "Une erreur inattendue est survenue. Réessayez dans un instant.",
+    "withdraw_reason_required": "Indiquez le motif du retrait."
   },
   "auth": {
     "signup": {
@@ -220,6 +222,425 @@
     "editProfile": "Compléter mon profil",
     "viewProfile": "Modifier ma fiche",
     "reviews": "Demandes à traiter",
-    "admin": "Espace superviseur"
+    "admin": "Espace superviseur",
+    "supervisorCard": "Votre rôle",
+    "supervisorText": "Vous validez les comptes de coach, tranchez les demandes d'athlètes restées sans réponse sept jours et gérez les contenus du site."
+  },
+  "profile": {
+    "title": "Mon profil",
+    "save": "Enregistrer",
+    "saveDraft": "Enregistrer en brouillon",
+    "submit": "Soumettre pour vérification",
+    "submitCoach": "Soumettre au superviseur",
+    "saving": "Enregistrement…",
+    "back": "Retour à mon espace",
+    "step": "Étape 2 / 3 · votre profil",
+    "remaining": "{count, plural, =0 {Fiche complète} one {# champ restant} other {# champs restants}}",
+    "sections": {
+      "identity": "Identité",
+      "practice": "Pratique sportive",
+      "palmares": "Palmarès",
+      "photo": "Photo de profil",
+      "publication": "Publication"
+    },
+    "fields": {
+      "lastName": "Nom",
+      "firstNames": "Prénoms",
+      "birthDate": "Date de naissance",
+      "sex": "Sexe",
+      "sexOptions": {
+        "male": "Masculin",
+        "female": "Féminin"
+      },
+      "choose": "Choisir",
+      "discipline": "Discipline principale",
+      "disciplines": "Disciplines enseignées",
+      "weightClass": "Catégorie de poids",
+      "city": "Ville",
+      "coach": "Coach ou dojo de rattachement",
+      "coachNone": "Aucun pour l'instant",
+      "coachHint": "Facultatif. Tout coach référencé peut vérifier votre fiche.",
+      "bio": "Présentation",
+      "bioPlaceholder": "Quelques lignes sur votre parcours, votre dojo et vos objectifs.",
+      "bioCoachPlaceholder": "Votre parcours, votre dojo, les publics que vous encadrez.",
+      "practiceSince": "Pratique depuis (année)",
+      "fightsCount": "Nombre de combats",
+      "dojo": "Dojo ou club",
+      "experience": "Années d'expérience"
+    },
+    "birthDateNote": "La date de naissance n'est jamais publiée. Elle sert uniquement à déterminer si l'autorisation d'un responsable légal est nécessaire.",
+    "lockedNote": "Fiche publiée : le nom, les prénoms, le sexe, la discipline et la date de naissance ne peuvent plus être modifiés. En cas d'erreur, écrivez au superviseur général.",
+    "lockedNoteCoach": "Compte validé : le nom et les prénoms ne peuvent plus être modifiés.",
+    "palmares": {
+      "later": "Maintenant ou plus tard",
+      "competition": "Compétition",
+      "competitionPlaceholder": "Championnat national",
+      "year": "Année",
+      "location": "Lieu",
+      "weightClass": "Catégorie",
+      "result": "Résultat",
+      "results": {
+        "gold": "Or",
+        "silver": "Argent",
+        "bronze": "Bronze",
+        "participation": "Participation"
+      },
+      "add": "Ajouter une entrée",
+      "empty": "Aucune entrée pour l'instant.",
+      "note": "Vous pouvez compléter votre palmarès maintenant ou plus tard. Toute entrée ajoutée après la publication reste invisible du public jusqu'à ce qu'un coach l'ait vérifiée. Le reste de votre fiche, lui, demeure en ligne.",
+      "status": {
+        "approved": "En ligne",
+        "pending": "À vérifier",
+        "rejected": "Refusée"
+      },
+      "delete": "Supprimer l'entrée {name}",
+      "reason": "Motif : {reason}"
+    },
+    "photo": {
+      "choose": "Choisir une image",
+      "change": "Changer de photo",
+      "remove": "Retirer la photo",
+      "hint": "JPEG, PNG ou WebP. L'image est réduite automatiquement et ses métadonnées (lieu de prise de vue, appareil) sont supprimées avant l'envoi.",
+      "uploading": "Envoi en cours…",
+      "alt": "Votre photo de profil"
+    },
+    "publication": {
+      "consentAthlete": "J'accepte que mon nom, ma photo, ma ville et mon palmarès soient publiés sur le site.",
+      "consentCoach": "J'accepte que mon nom, ma photo, ma ville, mon dojo et ma présentation soient publiés sur le site.",
+      "withdrawWarning": "Décocher cette case retire immédiatement votre fiche du site.",
+      "minor": "Athlète mineur : une autorisation écrite du responsable légal sera demandée au coach avant la mise en ligne.",
+      "footnote": "Tant qu'elle n'est pas vérifiée, votre fiche n'apparaît pas sur le site public.",
+      "footnoteCoach": "Votre compte est examiné par le superviseur général avant d'apparaître sur le site."
+    },
+    "banners": {
+      "pending": "Votre fiche est en cours de vérification. Vous pouvez encore la modifier : le coach verra la dernière version.",
+      "pendingCoach": "Votre compte est en cours d'examen par le superviseur général.",
+      "approved": "Votre fiche est en ligne. Vos modifications restent visibles et votre coach en est informé.",
+      "approvedCoach": "Votre compte est validé et votre fiche est en ligne.",
+      "rejected": "Votre fiche a été refusée. Corrigez-la puis soumettez-la de nouveau.",
+      "reason": "Motif : {reason}"
+    },
+    "feedback": {
+      "saved": "Modifications enregistrées.",
+      "submitted": "Fiche soumise : un coach référencé la vérifiera sous sept jours.",
+      "submittedCoach": "Compte soumis : le superviseur général va l'examiner.",
+      "entryAdded": "Entrée ajoutée au palmarès.",
+      "entryDeleted": "Entrée supprimée.",
+      "photoSaved": "Photo enregistrée.",
+      "photoRemoved": "Photo retirée."
+    },
+    "errors": {
+      "fix_fields": "Certains champs sont à corriger.",
+      "too_long": "Ce texte est trop long.",
+      "invalid_date": "Date invalide.",
+      "future_date": "La date ne peut pas être dans le futur.",
+      "invalid_year": "Année invalide.",
+      "invalid_number": "Nombre invalide.",
+      "invalid_choice": "Choix invalide.",
+      "invalid_weight_class": "Catégorie invalide.",
+      "competition_required": "Indiquez le nom de la compétition.",
+      "photo_type": "Choisissez une image JPEG, PNG ou WebP.",
+      "photo_size": "L'image dépasse 20 Mo.",
+      "photo_upload": "L'envoi de la photo a échoué. Réessayez."
+    },
+    "noCoachRecord": "Ce compte n'a pas de fiche de coach. Pour en créer une, écrivez à l'équipe technique."
+  },
+  "review": {
+    "title": "Demandes à traiter",
+    "space": {
+      "coach": "Espace coach",
+      "superviseur": "Superviseur général"
+    },
+    "back": "Mon espace",
+    "stats": {
+      "open": "En attente",
+      "approved": "Validées par vous",
+      "delay": "Délai moyen",
+      "days": "{value} j",
+      "none": "—"
+    },
+    "queue": {
+      "title": "Demandes à traiter",
+      "empty": "Aucune demande en attente pour le moment.",
+      "note": "Ces demandes sont visibles par tous les coachs référencés. Elles portent sur un profil entier ou sur un simple ajout de palmarès. Sans réponse au septième jour, elles passent automatiquement au superviseur général.",
+      "noteSuperviseur": "Vous voyez toutes les demandes d'athlètes. Celles marquées « Superviseur » ont dépassé le délai de sept jours : la décision vous revient."
+    },
+    "card": {
+      "submitted": "Soumis le {date}",
+      "entries": "{count, plural, =0 {Aucune entrée de palmarès} one {# entrée de palmarès} other {# entrées de palmarès}}",
+      "palmaresKind": "Ajout de palmarès · {count, plural, one {# entrée} other {# entrées}}",
+      "alreadyOnline": "Fiche déjà en ligne",
+      "due": "J−{days}",
+      "dueLabel": "{days, plural, =0 {Dernier jour avant le passage au superviseur} one {# jour restant avant le passage au superviseur} other {# jours restants avant le passage au superviseur}}",
+      "escalated": "Superviseur",
+      "escalatedLabel": "Délai dépassé, demande transmise au superviseur général",
+      "escalatedNote": "Le délai de sept jours est dépassé : cette demande est passée au superviseur général.",
+      "facts": {
+        "sex": "Sexe",
+        "age": "Âge",
+        "ageValue": "{age} ans",
+        "practiceSince": "Pratique depuis",
+        "fights": "Combats",
+        "coach": "Coach référent",
+        "noCoach": "Aucun",
+        "empty": "—"
+      },
+      "bio": "Présentation",
+      "entriesTitle": "Palmarès à vérifier",
+      "noEntries": "Aucune entrée de palmarès à vérifier.",
+      "setAside": "Écarter",
+      "setAsideLabel": "Écarter l'entrée {name}",
+      "minorTitle": "Athlète mineur — {age} ans",
+      "minorTitleUnknown": "Athlète mineur",
+      "minorText": "La publication exige l'autorisation écrite d'un responsable légal.",
+      "attest": "J'atteste avoir reçu cette autorisation.",
+      "approve": "Valider",
+      "approvePalmares": "Valider les entrées",
+      "reject": "Refuser",
+      "confirmReject": "Confirmer le refus",
+      "cancel": "Annuler",
+      "reason": "Motif du refus",
+      "reasonEntries": "Motif pour les entrées écartées",
+      "reasonPlaceholder": "Photo illisible, catégorie incohérente…",
+      "reasonHint": "L'athlète lira ce motif dans son espace pour corriger sa fiche.",
+      "blocked": "Validation bloquée tant que l'attestation n'est pas cochée",
+      "signed": "Votre décision est enregistrée à votre nom dans le journal",
+      "sending": "Envoi…",
+      "photoAlt": "Photo de {name}"
+    },
+    "roster": {
+      "title": "Mes athlètes",
+      "empty": "Aucun athlète ne vous a encore choisi comme coach référent.",
+      "others": "Autres fiches modifiées",
+      "status": {
+        "approved": "En ligne",
+        "pending": "En attente",
+        "rejected": "Refusée",
+        "draft": "Brouillon",
+        "modified": "Modifiée, à revoir"
+      },
+      "modifiedNote": "Cette fiche est restée en ligne après modification par l'athlète. Relisez-la, puis confirmez.",
+      "markReviewed": "J'ai relu la fiche"
+    },
+    "done": {
+      "approvedProfile": "Fiche {de}{name} validée : elle est maintenant en ligne.",
+      "rejectedProfile": "Fiche {de}{name} refusée. L'athlète verra votre motif dans son espace.",
+      "approvedPalmares": "Palmarès {de}{name} vérifié.",
+      "rejectedPalmares": "Ajout au palmarès {de}{name} refusé.",
+      "markedReviewed": "Fiche {de}{name} marquée comme relue."
+    },
+    "restricted": {
+      "coachPending": "Votre compte de coach doit d'abord être validé par le superviseur général. Vous pourrez ensuite vérifier les fiches des athlètes.",
+      "notReviewer": "Cette page est réservée aux coachs référencés et au superviseur général."
+    },
+    "gone": "{name} : {error}"
+  },
+  "directory": {
+    "athletes": {
+      "eyebrow": "Répertoire",
+      "title": "Athlètes",
+      "intro": "Les athlètes de sambo et de MMA dont la fiche a été vérifiée par un coach référencé.",
+      "search": "Rechercher un nom, une ville…",
+      "searchLabel": "Rechercher un athlète",
+      "empty": "Aucun athlète ne correspond à ces critères.",
+      "emptyAll": "Les premières fiches d'athlètes arrivent bientôt.",
+      "back": "Tous les athlètes"
+    },
+    "coaches": {
+      "eyebrow": "Répertoire",
+      "title": "Coachs",
+      "intro": "Les coachs référencés qui encadrent le sambo et le MMA au Cameroun et vérifient les fiches des athlètes.",
+      "search": "Rechercher un nom, un dojo, une ville…",
+      "searchLabel": "Rechercher un coach",
+      "empty": "Aucun coach ne correspond à ces critères.",
+      "emptyAll": "Les premiers coachs référencés arrivent bientôt.",
+      "back": "Tous les coachs"
+    },
+    "filters": {
+      "discipline": "Discipline",
+      "sex": "Sexe",
+      "weight": "Catégorie",
+      "city": "Ville",
+      "remove": "Retirer le filtre {label}",
+      "results": "{count, plural, =0 {Aucun résultat} one {<b>#</b> résultat} other {<b>#</b> résultats}}",
+      "clear": "Effacer",
+      "submit": "Rechercher",
+      "loading": "Recherche…",
+      "label": "Filtrer les résultats"
+    },
+    "card": {
+      "titles": "{count, plural, one {# titre} other {# titres}}",
+      "athletes": "{count, plural, =0 {Aucun athlète en ligne} one {# athlète} other {# athlètes}}"
+    },
+    "more": "Charger la suite",
+    "profile": {
+      "verified": "Profil vérifié",
+      "verifiedCoach": "Coach référencé",
+      "coachEyebrow": "Coach",
+      "photoAlt": "Portrait de {name}",
+      "stats": {
+        "titles": "Titres",
+        "fights": "Combats",
+        "years": "Ans de pratique",
+        "experience": "Ans d'expérience",
+        "athletes": "Athlètes",
+        "rosterTitles": "Titres de ses athlètes"
+      },
+      "about": "Parcours",
+      "palmares": "Palmarès",
+      "palmaresCount": "{count, plural, one {# entrée} other {# entrées}}",
+      "palmaresEmpty": "Aucune entrée de palmarès vérifiée pour l'instant.",
+      "showMore": "{count, plural, one {Voir l'autre entrée} other {Voir les # autres}}",
+      "showLess": "Réduire",
+      "coach": "Encadré par",
+      "roster": "Ses athlètes",
+      "rosterEmpty": "Aucun athlète en ligne pour l'instant.",
+      "share": "Partager cette fiche",
+      "shareText": "{name} sur LSES Fighting",
+      "copy": "Copier le lien",
+      "copied": "Lien copié",
+      "copyFailed": "Copie impossible : sélectionnez l'adresse dans la barre du navigateur.",
+      "mentionAthlete": "Fiche vérifiée le {date} par un coach référencé. Pour en demander le retrait, écrivez à l'adresse figurant dans les <link>mentions légales</link>.",
+      "mentionCoach": "Compte validé le {date} par le superviseur général. Pour en demander le retrait, écrivez à l'adresse figurant dans les <link>mentions légales</link>.",
+      "metaAthlete": "{name}, {details}. Fiche vérifiée par un coach référencé sur LSES Fighting.",
+      "metaCoach": "{name}, coach de {details}. Coach référencé sur LSES Fighting."
+    },
+    "home": {
+      "empty": "Les premières fiches vérifiées apparaîtront ici."
+    }
+  },
+  "supervisor": {
+    "eyebrow": "Superviseur général",
+    "title": "Espace superviseur",
+    "back": "Mon espace",
+    "restricted": "Cet espace est réservé au superviseur général.",
+    "tabs": {
+      "requests": "Demandes",
+      "profiles": "Fiches",
+      "journal": "Journal",
+      "label": "Rubriques de l'espace superviseur"
+    },
+    "stats": {
+      "coaches": "Coachs à valider",
+      "escalated": "Escalades",
+      "online": "Fiches en ligne"
+    },
+    "escalated": {
+      "title": "Demandes escaladées",
+      "intro": "Aucun coach n'a statué dans le délai de sept jours. La décision revient au superviseur général.",
+      "empty": "Aucune demande escaladée."
+    },
+    "coaches": {
+      "title": "Comptes de coach à valider",
+      "empty": "Aucun compte de coach en attente.",
+      "submitted": "Soumis le {date}",
+      "experience": "{count, plural, one {# an d'expérience} other {# ans d'expérience}}",
+      "warning": "Valider ce compte lui donnera le pouvoir de publier des fiches d'athlètes, mineurs compris.",
+      "facts": {
+        "disciplines": "Disciplines",
+        "city": "Ville",
+        "dojo": "Dojo ou club",
+        "experience": "Expérience",
+        "years": "{count, plural, one {# an} other {# ans}}",
+        "empty": "—"
+      },
+      "bio": "Présentation",
+      "photoAlt": "Photo de {name}",
+      "approve": "Valider",
+      "reject": "Refuser",
+      "confirmReject": "Confirmer le refus",
+      "cancel": "Annuler",
+      "reason": "Motif du refus",
+      "reasonPlaceholder": "Dojo introuvable, identité à confirmer…",
+      "reasonHint": "Le coach lira ce motif dans son espace pour corriger son compte.",
+      "signed": "Votre décision est enregistrée à votre nom dans le journal",
+      "sending": "Envoi…"
+    },
+    "done": {
+      "approvedCoach": "Compte {de}{name} validé : il peut vérifier les fiches d'athlètes et apparaît dans le répertoire des coachs.",
+      "rejectedCoach": "Compte {de}{name} refusé. Le coach verra votre motif dans son espace.",
+      "withdrawn": "Fiche {de}{name} retirée du site."
+    },
+    "profiles": {
+      "title": "Fiches en ligne",
+      "intro": "Retirez une fiche du site à la demande de la personne concernée ou en cas d'abus. Elle repasse à l'état « à corriger » et pourra être soumise de nouveau.",
+      "athletes": "Athlètes",
+      "coaches": "Coachs",
+      "searchAthletes": "Rechercher un athlète",
+      "searchCoaches": "Rechercher un coach",
+      "search": "Nom, ville…",
+      "submit": "Rechercher",
+      "count": "{count, plural, =0 {Aucune fiche} one {# fiche} other {# fiches}}",
+      "empty": "Aucune fiche en ligne ne correspond.",
+      "since": "En ligne depuis le {date}",
+      "modified": "Modifiée, à revoir",
+      "view": "Voir la fiche",
+      "withdraw": "Retirer du site",
+      "confirmWithdraw": "Confirmer le retrait",
+      "cancel": "Annuler",
+      "reason": "Motif du retrait",
+      "reasonPlaceholder": "Demande de l'intéressé du 20 septembre…",
+      "reasonHint": "Le motif est inscrit au journal d'audit.",
+      "coachWarning": "Retirer un coach lui ôte aussi le droit de vérifier des fiches d'athlètes.",
+      "more": "Charger la suite"
+    },
+    "journal": {
+      "title": "Journal d'audit",
+      "latest": "Dernières actions",
+      "seeAll": "Tout voir",
+      "locked": "Le journal est en écriture seule. Aucune de ces lignes ne peut être modifiée ni supprimée, y compris depuis ce compte.",
+      "empty": "Aucune ligne ne correspond à ces critères.",
+      "search": "Nom d'une personne…",
+      "searchLabel": "Rechercher dans le journal",
+      "category": "Catégorie",
+      "categories": {
+        "all": "Toutes les actions",
+        "athletes": "Fiches d'athlètes",
+        "coaches": "Comptes de coach",
+        "escalations": "Escalades",
+        "roles": "Rôles",
+        "content": "Médias et actualités"
+      },
+      "filter": "Filtrer",
+      "count": "{count, plural, =0 {Aucune ligne} one {# ligne} other {# lignes}}",
+      "more": "Charger la suite",
+      "automatic": "Automatique",
+      "reason": "Motif : {reason}",
+      "minor": "Mineur",
+      "afterEscalation": "Après escalade",
+      "entriesSetAside": "{count, plural, one {# entrée écartée} other {# entrées écartées}}",
+      "supervisor": "Le superviseur général",
+      "console": "La console d'administration",
+      "someone": "Un compte sans fiche",
+      "someoneTarget": "un compte sans fiche",
+      "roles": {
+        "athlete": "athlète",
+        "coach": "coach",
+        "superviseur": "superviseur général",
+        "none": "aucun"
+      },
+      "actions": {
+        "athlete_submitted": "<b>{target}</b> a soumis sa fiche d'athlète",
+        "athlete_approved": "<b>{actor}</b> a validé la fiche {de}<b>{target}</b>",
+        "athlete_rejected": "<b>{actor}</b> a refusé la fiche {de}<b>{target}</b>",
+        "athlete_changes_reviewed": "<b>{actor}</b> a relu les modifications {de}<b>{target}</b>",
+        "athlete_consent_withdrawn": "<b>{target}</b> a retiré son accord de publication",
+        "athlete_withdrawn": "<b>{actor}</b> a retiré du site la fiche {de}<b>{target}</b>",
+        "coach_submitted": "<b>{target}</b> a soumis son compte de coach",
+        "coach_approved": "<b>{actor}</b> a validé le compte de coach {de}<b>{target}</b>",
+        "coach_rejected": "<b>{actor}</b> a refusé le compte de coach {de}<b>{target}</b>",
+        "coach_consent_withdrawn": "<b>{target}</b> a retiré son accord de publication",
+        "coach_withdrawn": "<b>{actor}</b> a retiré du site la fiche {de}<b>{target}</b>",
+        "palmares_submitted": "<b>{target}</b> a ajouté des entrées à son palmarès",
+        "palmares_approved": "<b>{actor}</b> a validé le palmarès {de}<b>{target}</b>",
+        "palmares_rejected": "<b>{actor}</b> a refusé l'ajout au palmarès {de}<b>{target}</b>",
+        "request_escalated": "La demande {de}<b>{target}</b> est passée en escalade",
+        "profile_role_changed": "Le rôle {de}<b>{target}</b> est passé de {from} à {to}",
+        "media_created": "<b>{actor}</b> a ajouté le média « {title} »",
+        "media_deleted": "<b>{actor}</b> a supprimé le média « {title} »",
+        "news_published": "<b>{actor}</b> a publié l'actualité « {title} »",
+        "unknown": "<b>{actor}</b> : {action}"
+      }
+    }
   }
 }

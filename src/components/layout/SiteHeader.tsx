@@ -1,8 +1,8 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { NAV_ITEMS } from "@/lib/site";
 import { AccountNav } from "@/components/account/AccountNav";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { MainNavLinks } from "./MainNavLinks";
 import { MobileMenu } from "./MobileMenu";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { Wordmark } from "./Wordmark";
@@ -19,15 +19,7 @@ export function SiteHeader() {
 
         {/* Bureau */}
         <nav aria-label={t("a11y.mainNav")} className="hidden lg:block">
-          <ul className="flex items-center gap-7 text-sm font-medium text-muted">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className="transition-colors hover:text-foreground">
-                  {t(`nav.${item.key}`)}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <MainNavLinks />
         </nav>
 
         <div className="flex items-center gap-3">

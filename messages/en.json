@@ -11,6 +11,7 @@
     "mainNav": "Main navigation"
   },
   "nav": {
+    "home": "Home",
     "sambo": "Sambo",
     "mma": "MMA",
     "athletes": "Athletes",
@@ -97,7 +98,8 @@
     "guardian_attestation_required": "Minor athlete: confirm you have received written consent from a legal guardian.",
     "nothing_to_review": "This profile is not flagged as modified.",
     "profile_not_published": "No live profile matches.",
-    "unknown": "Something went wrong. Please try again in a moment."
+    "unknown": "Something went wrong. Please try again in a moment.",
+    "withdraw_reason_required": "Give the reason for the removal."
   },
   "auth": {
     "signup": {
@@ -220,6 +222,425 @@
     "editProfile": "Fill in my profile",
     "viewProfile": "Edit my profile",
     "reviews": "Requests to review",
-    "admin": "Supervisor area"
+    "admin": "Supervisor area",
+    "supervisorCard": "Your role",
+    "supervisorText": "You approve coach accounts, decide athlete requests left unanswered for seven days and manage the site's content."
+  },
+  "profile": {
+    "title": "My profile",
+    "save": "Save",
+    "saveDraft": "Save as draft",
+    "submit": "Submit for review",
+    "submitCoach": "Submit to the supervisor",
+    "saving": "Saving…",
+    "back": "Back to my account",
+    "step": "Step 2 / 3 · your profile",
+    "remaining": "{count, plural, =0 {Profile complete} one {# field left} other {# fields left}}",
+    "sections": {
+      "identity": "Identity",
+      "practice": "Sport",
+      "palmares": "Record",
+      "photo": "Profile photo",
+      "publication": "Publication"
+    },
+    "fields": {
+      "lastName": "Last name",
+      "firstNames": "First names",
+      "birthDate": "Date of birth",
+      "sex": "Sex",
+      "sexOptions": {
+        "male": "Male",
+        "female": "Female"
+      },
+      "choose": "Choose",
+      "discipline": "Main discipline",
+      "disciplines": "Disciplines taught",
+      "weightClass": "Weight class",
+      "city": "City",
+      "coach": "Coach or dojo",
+      "coachNone": "None for now",
+      "coachHint": "Optional. Any listed coach can review your profile.",
+      "bio": "About",
+      "bioPlaceholder": "A few lines about your background, your dojo and your goals.",
+      "bioCoachPlaceholder": "Your background, your dojo, the people you coach.",
+      "practiceSince": "Training since (year)",
+      "fightsCount": "Number of fights",
+      "dojo": "Dojo or club",
+      "experience": "Years of experience"
+    },
+    "birthDateNote": "Your date of birth is never published. It is only used to know whether a legal guardian's consent is required.",
+    "lockedNote": "Published profile: last name, first names, sex, discipline and date of birth can no longer be changed. If something is wrong, contact the general supervisor.",
+    "lockedNoteCoach": "Approved account: last name and first names can no longer be changed.",
+    "palmares": {
+      "later": "Now or later",
+      "competition": "Competition",
+      "competitionPlaceholder": "National championship",
+      "year": "Year",
+      "location": "Place",
+      "weightClass": "Weight class",
+      "result": "Result",
+      "results": {
+        "gold": "Gold",
+        "silver": "Silver",
+        "bronze": "Bronze",
+        "participation": "Took part"
+      },
+      "add": "Add an entry",
+      "empty": "No entries yet.",
+      "note": "You can fill in your record now or later. Any entry added after publication stays hidden from the public until a coach has reviewed it. The rest of your profile stays online.",
+      "status": {
+        "approved": "Live",
+        "pending": "To review",
+        "rejected": "Declined"
+      },
+      "delete": "Delete the entry {name}",
+      "reason": "Reason: {reason}"
+    },
+    "photo": {
+      "choose": "Choose an image",
+      "change": "Change photo",
+      "remove": "Remove photo",
+      "hint": "JPEG, PNG or WebP. The image is resized automatically and its metadata (location, device) is removed before upload.",
+      "uploading": "Uploading…",
+      "alt": "Your profile photo"
+    },
+    "publication": {
+      "consentAthlete": "I agree that my name, photo, city and record may be published on the site.",
+      "consentCoach": "I agree that my name, photo, city, dojo and profile text may be published on the site.",
+      "withdrawWarning": "Unticking this box immediately removes your profile from the site.",
+      "minor": "Minor athlete: written consent from a legal guardian will be required from the coach before publication.",
+      "footnote": "Until it is reviewed, your profile does not appear on the public site.",
+      "footnoteCoach": "Your account is reviewed by the general supervisor before it appears on the site."
+    },
+    "banners": {
+      "pending": "Your profile is being reviewed. You can still edit it: the coach will see the latest version.",
+      "pendingCoach": "Your account is being reviewed by the general supervisor.",
+      "approved": "Your profile is live. Your changes stay visible and your coach is notified.",
+      "approvedCoach": "Your account is approved and your profile is live.",
+      "rejected": "Your profile was declined. Correct it, then submit it again.",
+      "reason": "Reason: {reason}"
+    },
+    "feedback": {
+      "saved": "Changes saved.",
+      "submitted": "Profile submitted: a listed coach will review it within seven days.",
+      "submittedCoach": "Account submitted: the general supervisor will review it.",
+      "entryAdded": "Entry added to your record.",
+      "entryDeleted": "Entry deleted.",
+      "photoSaved": "Photo saved.",
+      "photoRemoved": "Photo removed."
+    },
+    "errors": {
+      "fix_fields": "Some fields need correcting.",
+      "too_long": "This text is too long.",
+      "invalid_date": "Invalid date.",
+      "future_date": "The date cannot be in the future.",
+      "invalid_year": "Invalid year.",
+      "invalid_number": "Invalid number.",
+      "invalid_choice": "Invalid choice.",
+      "invalid_weight_class": "Invalid weight class.",
+      "competition_required": "Enter the competition name.",
+      "photo_type": "Choose a JPEG, PNG or WebP image.",
+      "photo_size": "The image is larger than 20 MB.",
+      "photo_upload": "The photo upload failed. Please try again."
+    },
+    "noCoachRecord": "This account has no coach profile. To create one, contact the technical team."
+  },
+  "review": {
+    "title": "Requests to review",
+    "space": {
+      "coach": "Coach area",
+      "superviseur": "General supervisor"
+    },
+    "back": "My account",
+    "stats": {
+      "open": "Pending",
+      "approved": "Approved by you",
+      "delay": "Average time",
+      "days": "{value} d",
+      "none": "—"
+    },
+    "queue": {
+      "title": "Requests to review",
+      "empty": "No pending requests at the moment.",
+      "note": "These requests are visible to every listed coach. They cover either a full profile or a simple record addition. Without an answer by the seventh day, they automatically go to the general supervisor.",
+      "noteSuperviseur": "You see every athlete request. Those marked “Supervisor” have passed the seven-day limit: the decision is yours."
+    },
+    "card": {
+      "submitted": "Submitted on {date}",
+      "entries": "{count, plural, =0 {No record entries} one {# record entry} other {# record entries}}",
+      "palmaresKind": "Record addition · {count, plural, one {# entry} other {# entries}}",
+      "alreadyOnline": "Profile already online",
+      "due": "D−{days}",
+      "dueLabel": "{days, plural, =0 {Last day before it goes to the supervisor} one {# day left before it goes to the supervisor} other {# days left before it goes to the supervisor}}",
+      "escalated": "Supervisor",
+      "escalatedLabel": "Time limit passed, request sent to the general supervisor",
+      "escalatedNote": "The seven-day limit has passed: this request now belongs to the general supervisor.",
+      "facts": {
+        "sex": "Sex",
+        "age": "Age",
+        "ageValue": "{age} years old",
+        "practiceSince": "Training since",
+        "fights": "Fights",
+        "coach": "Coach",
+        "noCoach": "None",
+        "empty": "—"
+      },
+      "bio": "About",
+      "entriesTitle": "Record to check",
+      "noEntries": "No record entries to check.",
+      "setAside": "Set aside",
+      "setAsideLabel": "Set aside the entry {name}",
+      "minorTitle": "Minor athlete — {age} years old",
+      "minorTitleUnknown": "Minor athlete",
+      "minorText": "Publication requires written consent from a parent or legal guardian.",
+      "attest": "I confirm I have received this consent.",
+      "approve": "Approve",
+      "approvePalmares": "Approve entries",
+      "reject": "Reject",
+      "confirmReject": "Confirm rejection",
+      "cancel": "Cancel",
+      "reason": "Reason for rejection",
+      "reasonEntries": "Reason for the entries set aside",
+      "reasonPlaceholder": "Unreadable photo, inconsistent weight class…",
+      "reasonHint": "The athlete will read this reason in their account to fix the profile.",
+      "blocked": "Approval blocked until the consent box is ticked",
+      "signed": "Your decision is logged under your name",
+      "sending": "Sending…",
+      "photoAlt": "Photo of {name}"
+    },
+    "roster": {
+      "title": "My athletes",
+      "empty": "No athlete has chosen you as their coach yet.",
+      "others": "Other edited profiles",
+      "status": {
+        "approved": "Online",
+        "pending": "Pending",
+        "rejected": "Rejected",
+        "draft": "Draft",
+        "modified": "Edited, to review"
+      },
+      "modifiedNote": "This profile stayed online after the athlete edited it. Read it again, then confirm.",
+      "markReviewed": "I have reviewed it"
+    },
+    "done": {
+      "approvedProfile": "{name}'s profile is approved and now online.",
+      "rejectedProfile": "{name}'s profile was rejected. The athlete will see your reason in their account.",
+      "approvedPalmares": "{name}'s record has been checked.",
+      "rejectedPalmares": "{name}'s record addition was rejected.",
+      "markedReviewed": "{name}'s profile is marked as reviewed."
+    },
+    "restricted": {
+      "coachPending": "Your coach account must first be approved by the general supervisor. You will then be able to review athlete profiles.",
+      "notReviewer": "This page is reserved for listed coaches and the general supervisor."
+    },
+    "gone": "{name}: {error}"
+  },
+  "directory": {
+    "athletes": {
+      "eyebrow": "Directory",
+      "title": "Athletes",
+      "intro": "Sambo and MMA athletes whose profile has been checked by a listed coach.",
+      "search": "Search a name or a city…",
+      "searchLabel": "Search for an athlete",
+      "empty": "No athlete matches these filters.",
+      "emptyAll": "The first athlete profiles are coming soon.",
+      "back": "All athletes"
+    },
+    "coaches": {
+      "eyebrow": "Directory",
+      "title": "Coaches",
+      "intro": "Listed coaches who train sambo and MMA athletes in Cameroon and check their profiles.",
+      "search": "Search a name, a dojo or a city…",
+      "searchLabel": "Search for a coach",
+      "empty": "No coach matches these filters.",
+      "emptyAll": "The first listed coaches are coming soon.",
+      "back": "All coaches"
+    },
+    "filters": {
+      "discipline": "Discipline",
+      "sex": "Sex",
+      "weight": "Weight class",
+      "city": "City",
+      "remove": "Remove the {label} filter",
+      "results": "{count, plural, =0 {No results} one {<b>#</b> result} other {<b>#</b> results}}",
+      "clear": "Clear",
+      "submit": "Search",
+      "loading": "Searching…",
+      "label": "Filter the results"
+    },
+    "card": {
+      "titles": "{count, plural, one {# title} other {# titles}}",
+      "athletes": "{count, plural, =0 {No athletes online} one {# athlete} other {# athletes}}"
+    },
+    "more": "Load more",
+    "profile": {
+      "verified": "Verified profile",
+      "verifiedCoach": "Listed coach",
+      "coachEyebrow": "Coach",
+      "photoAlt": "Portrait of {name}",
+      "stats": {
+        "titles": "Titles",
+        "fights": "Fights",
+        "years": "Years of practice",
+        "experience": "Years of experience",
+        "athletes": "Athletes",
+        "rosterTitles": "Titles won by their athletes"
+      },
+      "about": "Background",
+      "palmares": "Record",
+      "palmaresCount": "{count, plural, one {# entry} other {# entries}}",
+      "palmaresEmpty": "No verified record entries yet.",
+      "showMore": "{count, plural, one {Show the other entry} other {Show the # others}}",
+      "showLess": "Show less",
+      "coach": "Trained by",
+      "roster": "Their athletes",
+      "rosterEmpty": "No athletes online yet.",
+      "share": "Share this profile",
+      "shareText": "{name} on LSES Fighting",
+      "copy": "Copy link",
+      "copied": "Link copied",
+      "copyFailed": "Copy failed: select the address in your browser's address bar.",
+      "mentionAthlete": "Profile checked on {date} by a listed coach. To ask for its removal, write to the address given in the <link>legal notice</link>.",
+      "mentionCoach": "Account approved on {date} by the general supervisor. To ask for its removal, write to the address given in the <link>legal notice</link>.",
+      "metaAthlete": "{name}, {details}. Profile checked by a listed coach on LSES Fighting.",
+      "metaCoach": "{name}, {details} coach. Listed coach on LSES Fighting."
+    },
+    "home": {
+      "empty": "The first verified profiles will appear here."
+    }
+  },
+  "supervisor": {
+    "eyebrow": "General supervisor",
+    "title": "Supervisor area",
+    "back": "My account",
+    "restricted": "This area is reserved for the general supervisor.",
+    "tabs": {
+      "requests": "Requests",
+      "profiles": "Profiles",
+      "journal": "Log",
+      "label": "Supervisor area sections"
+    },
+    "stats": {
+      "coaches": "Coaches to approve",
+      "escalated": "Escalated",
+      "online": "Profiles online"
+    },
+    "escalated": {
+      "title": "Escalated requests",
+      "intro": "No coach decided within seven days. The decision now belongs to the general supervisor.",
+      "empty": "No escalated requests."
+    },
+    "coaches": {
+      "title": "Coach accounts to approve",
+      "empty": "No coach account pending.",
+      "submitted": "Submitted on {date}",
+      "experience": "{count, plural, one {# year of experience} other {# years of experience}}",
+      "warning": "Approving this account allows them to publish athlete profiles, minors included.",
+      "facts": {
+        "disciplines": "Disciplines",
+        "city": "City",
+        "dojo": "Dojo or club",
+        "experience": "Experience",
+        "years": "{count, plural, one {# year} other {# years}}",
+        "empty": "—"
+      },
+      "bio": "About",
+      "photoAlt": "Photo of {name}",
+      "approve": "Approve",
+      "reject": "Reject",
+      "confirmReject": "Confirm rejection",
+      "cancel": "Cancel",
+      "reason": "Reason for rejection",
+      "reasonPlaceholder": "Dojo not found, identity to confirm…",
+      "reasonHint": "The coach will read this reason in their account to fix it.",
+      "signed": "Your decision is logged under your name",
+      "sending": "Sending…"
+    },
+    "done": {
+      "approvedCoach": "{name}'s account is approved: they can now review athlete profiles and appear in the coach directory.",
+      "rejectedCoach": "{name}'s account was rejected. The coach will see your reason in their account.",
+      "withdrawn": "{name}'s profile was removed from the site."
+    },
+    "profiles": {
+      "title": "Profiles online",
+      "intro": "Remove a profile from the site at the request of the person concerned or in case of abuse. It goes back to “to fix” and can be submitted again.",
+      "athletes": "Athletes",
+      "coaches": "Coaches",
+      "searchAthletes": "Search for an athlete",
+      "searchCoaches": "Search for a coach",
+      "search": "Name, city…",
+      "submit": "Search",
+      "count": "{count, plural, =0 {No profiles} one {# profile} other {# profiles}}",
+      "empty": "No online profile matches.",
+      "since": "Online since {date}",
+      "modified": "Edited, to review",
+      "view": "View profile",
+      "withdraw": "Remove from site",
+      "confirmWithdraw": "Confirm removal",
+      "cancel": "Cancel",
+      "reason": "Reason for removal",
+      "reasonPlaceholder": "Request from the person on 20 September…",
+      "reasonHint": "The reason is written to the audit log.",
+      "coachWarning": "Removing a coach also takes away their right to review athlete profiles.",
+      "more": "Load more"
+    },
+    "journal": {
+      "title": "Audit log",
+      "latest": "Latest actions",
+      "seeAll": "See all",
+      "locked": "The log is append-only. None of these lines can be changed or deleted, not even from this account.",
+      "empty": "No lines match these filters.",
+      "search": "A person's name…",
+      "searchLabel": "Search the log",
+      "category": "Category",
+      "categories": {
+        "all": "All actions",
+        "athletes": "Athlete profiles",
+        "coaches": "Coach accounts",
+        "escalations": "Escalations",
+        "roles": "Roles",
+        "content": "Media and news"
+      },
+      "filter": "Filter",
+      "count": "{count, plural, =0 {No lines} one {# line} other {# lines}}",
+      "more": "Load more",
+      "automatic": "Automatic",
+      "reason": "Reason: {reason}",
+      "minor": "Minor",
+      "afterEscalation": "After escalation",
+      "entriesSetAside": "{count, plural, one {# entry set aside} other {# entries set aside}}",
+      "supervisor": "The general supervisor",
+      "console": "The admin console",
+      "someone": "An account without a profile",
+      "someoneTarget": "an account without a profile",
+      "roles": {
+        "athlete": "athlete",
+        "coach": "coach",
+        "superviseur": "general supervisor",
+        "none": "none"
+      },
+      "actions": {
+        "athlete_submitted": "<b>{target}</b> submitted their athlete profile",
+        "athlete_approved": "<b>{actor}</b> approved <b>{target}</b>'s profile",
+        "athlete_rejected": "<b>{actor}</b> rejected <b>{target}</b>'s profile",
+        "athlete_changes_reviewed": "<b>{actor}</b> reviewed <b>{target}</b>'s changes",
+        "athlete_consent_withdrawn": "<b>{target}</b> withdrew their consent to publication",
+        "athlete_withdrawn": "<b>{actor}</b> removed <b>{target}</b>'s profile from the site",
+        "coach_submitted": "<b>{target}</b> submitted their coach account",
+        "coach_approved": "<b>{actor}</b> approved <b>{target}</b>'s coach account",
+        "coach_rejected": "<b>{actor}</b> rejected <b>{target}</b>'s coach account",
+        "coach_consent_withdrawn": "<b>{target}</b> withdrew their consent to publication",
+        "coach_withdrawn": "<b>{actor}</b> removed <b>{target}</b>'s profile from the site",
+        "palmares_submitted": "<b>{target}</b> added entries to their record",
+        "palmares_approved": "<b>{actor}</b> approved <b>{target}</b>'s record",
+        "palmares_rejected": "<b>{actor}</b> rejected <b>{target}</b>'s record addition",
+        "request_escalated": "The request from <b>{target}</b> was escalated",
+        "profile_role_changed": "The role of <b>{target}</b> changed from {from} to {to}",
+        "media_created": "<b>{actor}</b> added the media “{title}”",
+        "media_deleted": "<b>{actor}</b> deleted the media “{title}”",
+        "news_published": "<b>{actor}</b> published the news item “{title}”",
+        "unknown": "<b>{actor}</b>: {action}"
+      }
+    }
   }
 }

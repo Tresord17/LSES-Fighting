@@ -3,6 +3,7 @@
 export const SITE_NAME = "LSES Fighting";
 
 export const NAV_ITEMS = [
+  { href: "/", key: "home" },
   { href: "/disciplines/sambo", key: "sambo" },
   { href: "/disciplines/mma", key: "mma" },
   { href: "/athletes", key: "athletes" },
@@ -19,3 +20,10 @@ export const SOCIAL_LINKS: {
   facebook: null,
   instagram: null,
 };
+
+// Rubrique active : correspondance exacte pour l'accueil, par préfixe pour
+// les autres (une fiche d'athlète garde « Athlètes » actif).
+export function isActivePath(pathname: string, href: string): boolean {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}

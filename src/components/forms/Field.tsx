@@ -21,7 +21,7 @@ export function Field({ name, label, error, hint, trailing, id, className = "", 
       <div
         className={`flex h-13 items-center border bg-surface focus-within:border-gold ${
           error ? "border-blood" : "border-line-strong/60"
-        }`}
+        } ${input.disabled ? "opacity-60" : ""}`}
       >
         <input
           id={inputId}

@@ -85,7 +85,7 @@ On invite ensuite le coéquipier dans _Settings › Collaborators_. Chaque fonct
 
 ## 6. Base de données Supabase
 
-Le schéma complet est décrit dans [`docs/base-de-donnees.md`](docs/base-de-donnees.md). Il tient en quatre migrations versionnées dans `supabase/migrations`, que l'on applique ainsi :
+Le schéma complet est décrit dans [`docs/base-de-donnees.md`](docs/base-de-donnees.md). Il tient en cinq migrations versionnées dans `supabase/migrations`, que l'on applique ainsi :
 
 1. Créer un projet sur [supabase.com](https://supabase.com) (plan gratuit), région **West EU (London)**, la plus proche à la fois du Cameroun et du client au Royaume-Uni. On conserve le mot de passe de la base dans un gestionnaire de mots de passe.
 2. Dans _Project Settings › API Keys_, copier l'URL du projet et la **clé publishable** (`sb_publishable_…`) dans `.env.local`. La clé secrète ne doit jamais apparaître dans le code du site.
@@ -97,10 +97,10 @@ Le schéma complet est décrit dans [`docs/base-de-donnees.md`](docs/base-de-don
    npm run db:push    # applique les migrations de supabase/migrations
    ```
 
-   Sans la CLI, on peut aussi coller les quatre fichiers, dans l'ordre, dans _SQL Editor_.
+   Sans la CLI, on peut aussi coller les fichiers, dans l'ordre, dans _SQL Editor_. Pour une base déjà en place, `npm run db:push` n'applique que les migrations nouvelles.
 
 4. Vérifier la sécurité : coller `supabase/tests/scenarios_securite.sql` dans _SQL Editor_ et l'exécuter. Le script simule des athlètes, des coachs, le superviseur et un visiteur, tente 79 actions permises ou interdites, puis annule tout. S'il se termine sans message « ÉCHEC », tout est conforme.
-5. Quand le client s'est inscrit sur le site, lui donner le rôle de superviseur général avec `supabase/sql/promouvoir-superviseur.sql` (en remplaçant l'adresse).
+5. Quand le client s'est inscrit sur le site, lui donner le rôle de superviseur général avec `supabase/sql/promouvoir-superviseur.sql` (en remplaçant l'adresse). Pour qu'il puisse aussi vérifier des fiches en tant que coach et apparaître dans le répertoire des coachs, il s'inscrit d'abord comme coach et remplit sa fiche ; la promotion conserve cette fiche.
 
 Après chaque nouvelle migration, on régénère les types TypeScript avec `npm run db:types` : l'autocomplétion de VS Code connaît alors toutes les tables et fonctions.
 
@@ -113,8 +113,8 @@ Le site gère l'inscription et la connexion par e-mail ou avec Google, la confir
 1. **Variables.** Dans `.env.local`, renseigner `NEXT_PUBLIC_SUPABASE_URL` et `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` (_Project Settings › API Keys_), garder `NEXT_PUBLIC_SITE_URL=http://localhost:3000`, puis relancer `npm run dev`.
 2. **Adresses autorisées.** Dans _Authentication › URL Configuration_, mettre `http://localhost:3000` comme Site URL et ajouter `http://localhost:3000/**` aux Redirect URLs.
 3. **Adresse et mot de passe.** Dans _Authentication › Sign In / Providers › Email_, laisser la confirmation de l'adresse activée et fixer la longueur minimale du mot de passe à 10 caractères.
-4. **Modèles d'e-mails.** Dans _Authentication › Emails › Templates_, remplacer le contenu de _Confirm signup_ par celui de `supabase/templates/confirmation.html`, et celui de _Reset password_ par `supabase/templates/recovery.html`, avec les sujets indiqués dans `supabase/config.toml`. Ces modèles sont bilingues et leurs liens fonctionnent même s'ils sont ouverts sur un autre appareil que celui de l'inscription.
-5. **Google.** Le fournisseur Google est activé avec l'ID client et le secret. Côté Google Cloud, seule l'URI de redirection de Supabase est nécessaire : les « origines JavaScript autorisées » ne servent qu'au bouton Google intégré dans une page, que nous n'utilisons pas. Tant que l'écran de consentement est en mode _Test_, seuls les comptes ajoutés comme testeurs peuvent se connecter ; il faudra le publier avant l'ouverture au public.
+4. **Modèles d'e-mails.** Supabase n'autorise la modification des modèles qu'une fois un serveur SMTP configuré (point 6). D'ici là, les modèles par défaut fonctionnent avec le site, à une limite près : le lien de confirmation doit être ouvert dans le navigateur qui a servi à l'inscription. Une fois le SMTP en place, on remplace dans _Authentication › Emails › Templates_ le contenu de _Confirm signup_ par `supabase/templates/confirmation.html` et celui de _Reset password_ par `supabase/templates/recovery.html`, avec les sujets indiqués dans `supabase/config.toml`. Ces modèles sont bilingues et leurs liens fonctionnent sur n'importe quel appareil.
+5. **Google.** Le fournisseur Google est activé avec l'ID client et le secret. Côté Google Cloud, seule l'URI de redirection de Supabase est nécessaire : les « origines JavaScript autorisées » ne servent qu'au bouton Google intégré dans une page, que nous n'utilisons pas. Tant que l'écran de consentement est en mode _Test_, seuls les comptes ajoutés comme testeurs peuvent se connecter ; il faudra le publier avant l'ouverture au public. Cet écran affiche pour l'instant l'adresse technique `<projet>.supabase.co`. Pour y lire « LSES Fighting », on renseigne dans _Google Auth Platform › Branding_ le nom, le logo, l'e-mail d'assistance, la page d'accueil et la politique de confidentialité du site, avec son nom de domaine en domaine autorisé, puis on demande la vérification de la marque. L'autre voie, payante, est un domaine personnalisé Supabase (par exemple `auth.<domaine>`, plan Pro).
 6. **Envoi des e-mails.** Le service d'envoi fourni par Supabase n'écrit qu'aux membres de l'équipe du projet, deux e-mails par heure au plus. Pour les essais, on ajoute les adresses de test dans _Organization › Team_. Avant l'ouverture au public, on configure un serveur SMTP (Brevo ou Resend) dans _Authentication › Emails › SMTP Settings_, de préférence avec le nom de domaine du site.
 
 ## 8. Organisation du code
@@ -132,19 +132,28 @@ src/
   i18n/              Configuration de next-intl (langues, navigation, chargement des textes)
   app/auth/          Retours de Google et liens des e-mails (sans préfixe de langue)
   components/auth/   Formulaires d'inscription, de connexion et de mot de passe
+  components/profile/ Formulaires de profil athlète et coach, palmarès, photo
+  components/review/ File de vérification des coachs, liste « Mes athlètes »
+  components/supervisor/ Espace superviseur (comptes de coach, retraits, journal d'audit)
+  components/directory/ Répertoires publics (filtres, cartes) et fiches athlète et coach
+  app/api/photos/    Photos des fiches en ligne, à une adresse stable pour le partage
   lib/
     auth/            Actions serveur d'authentification, validation, redirections sûres
+    profile/         Actions serveur du profil, validation, catégories de poids
+    review/          Lecture de la file de vérification, décisions des coachs
+    supervisor/      Lectures et actions de l'espace superviseur
+    directory/       Lectures des pages publiques (client « visiteur »), filtres d'adresse
     supabase/        Clients Supabase, types de la base, traduction des erreurs SQL
     theme.ts         Logique du thème clair / sombre
     site.ts          Menu principal et liens vers les réseaux sociaux
-    demo-data.ts     Données de démonstration, à remplacer par Supabase
+    demo-data.ts     Actualités de démonstration, en attendant l'espace superviseur
   proxy.ts           Proxy Next.js 16 : choix de la langue puis session Supabase
 supabase/
-  migrations/        Schéma de la base, règles d'accès, circuit de validation, stockage
+  migrations/        Schéma de la base, règles d'accès, circuit de validation, stockage, recherche
   tests/             Scénarios de sécurité exécutables dans le SQL Editor
   sql/               Scripts d'administration (promotion du superviseur)
   templates/         Modèles des e-mails de confirmation et de mot de passe oublié
-docs/                Documentation technique (base de données, authentification)
+docs/                Documentation technique (base, authentification, profil, vérification, répertoires, superviseur)
 ```
 
 ## 9. Conventions
