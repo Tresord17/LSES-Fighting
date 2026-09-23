@@ -1,6 +1,6 @@
 # Base de données LSES Fighting
 
-La base repose sur PostgreSQL, hébergé par Supabase. Elle est décrite entièrement par cinq migrations SQL (`supabase/migrations`), ce qui permet de la reconstruire à l'identique et de suivre chaque évolution dans Git.
+La base repose sur PostgreSQL, hébergé par Supabase. Elle est décrite entièrement par six migrations SQL (`supabase/migrations`), ce qui permet de la reconstruire à l'identique et de suivre chaque évolution dans Git.
 
 | Migration                       | Contenu                                                               |
 | ------------------------------- | --------------------------------------------------------------------- |
@@ -9,6 +9,7 @@ La base repose sur PostgreSQL, hébergé par Supabase. Elle est décrite entièr
 | `…100200_circuit_de_validation` | Inscription, soumission, décisions, escalade automatique au 7e jour   |
 | `…100300_stockage`              | Buckets de fichiers et leurs règles d'accès                           |
 | `…23100000_recherche_publique`  | Recherche sans accents dans les répertoires publics                   |
+| `…23110000_medias_superviseur`  | Lecture du bucket des médias par le superviseur (suppression)         |
 
 ## Modèle de données
 
@@ -84,4 +85,4 @@ Deux valeurs se modifient en une ligne, par une nouvelle migration : l'âge de l
 
 ## Vérification
 
-`supabase/tests/scenarios_securite.sql` rejoue 79 scénarios, autorisés et interdits (élévation de privilèges, lecture de données sensibles, contournement du circuit, falsification du journal, dépôt de fichiers chez autrui…), puis annule toutes ses écritures. Il s'exécute dans le SQL Editor de Supabase ou avec psql.
+`supabase/tests/scenarios_securite.sql` rejoue 85 scénarios, autorisés et interdits (élévation de privilèges, lecture de données sensibles, contournement du circuit, falsification du journal, dépôt de fichiers chez autrui…), puis annule toutes ses écritures. Il s'exécute dans le SQL Editor de Supabase ou avec psql.

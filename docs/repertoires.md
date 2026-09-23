@@ -6,6 +6,10 @@ Les pages « Athlètes » et « Coachs » sont ouvertes à tous, sans compte. El
 
 Seules les fiches en ligne apparaissent, avec les seules entrées de palmarès vérifiées par un coach. Ces lectures passent par un client Supabase « visiteur » (`src/lib/supabase/public.ts`), sans session ni cookie : même un coach ou le superviseur connecté voit exactement ce que voit le public. La date de naissance n'est jamais lue, si bien que la fiche n'affiche ni âge ni catégorie d'âge.
 
+## Accueil
+
+La page d'accueil reste statique (régénérée toutes les cinq minutes) : les boutons « Rejoindre » s'adaptent dans le navigateur, une fois la page affichée. Un visiteur est invité à s'inscrire ; un compte connecté lit en une requête son rôle et l'état de sa fiche, sous la RLS, et voit « Compléter mon profil » (rôle à choisir ou fiche en brouillon), « Modifier mon profil » (fiche refusée) ou « Mon espace ». L'encart de bas de page change de texte de la même façon. Sans JavaScript, la version visiteur reste affichée ; l'inscription renvoie de toute façon un compte connecté vers son espace.
+
 ## Recherche et filtres
 
 La recherche porte sur le nom, les prénoms et la ville (le dojo en plus pour les coachs). Elle ignore les accents et les majuscules : « yaounde » trouve Yaoundé, « bikoi » trouve Bikoï. Chaque mot saisi doit figurer dans la fiche, dans n'importe quel ordre. Les filtres (discipline, sexe, catégorie, ville) se lisent dans l'adresse de la page, ce qui permet de partager une recherche. La catégorie de poids n'est proposée qu'une fois la discipline choisie. Sans JavaScript, le tout fonctionne comme un formulaire classique ; avec JavaScript, la page se met à jour sans rechargement. Les résultats arrivent par douze, avec « Charger la suite ».

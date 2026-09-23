@@ -85,7 +85,7 @@ On invite ensuite le coéquipier dans _Settings › Collaborators_. Chaque fonct
 
 ## 6. Base de données Supabase
 
-Le schéma complet est décrit dans [`docs/base-de-donnees.md`](docs/base-de-donnees.md). Il tient en cinq migrations versionnées dans `supabase/migrations`, que l'on applique ainsi :
+Le schéma complet est décrit dans [`docs/base-de-donnees.md`](docs/base-de-donnees.md). Il tient en six migrations versionnées dans `supabase/migrations`, que l'on applique ainsi :
 
 1. Créer un projet sur [supabase.com](https://supabase.com) (plan gratuit), région **West EU (London)**, la plus proche à la fois du Cameroun et du client au Royaume-Uni. On conserve le mot de passe de la base dans un gestionnaire de mots de passe.
 2. Dans _Project Settings › API Keys_, copier l'URL du projet et la **clé publishable** (`sb_publishable_…`) dans `.env.local`. La clé secrète ne doit jamais apparaître dans le code du site.
@@ -99,7 +99,7 @@ Le schéma complet est décrit dans [`docs/base-de-donnees.md`](docs/base-de-don
 
    Sans la CLI, on peut aussi coller les fichiers, dans l'ordre, dans _SQL Editor_. Pour une base déjà en place, `npm run db:push` n'applique que les migrations nouvelles.
 
-4. Vérifier la sécurité : coller `supabase/tests/scenarios_securite.sql` dans _SQL Editor_ et l'exécuter. Le script simule des athlètes, des coachs, le superviseur et un visiteur, tente 79 actions permises ou interdites, puis annule tout. S'il se termine sans message « ÉCHEC », tout est conforme.
+4. Vérifier la sécurité : coller `supabase/tests/scenarios_securite.sql` dans _SQL Editor_ et l'exécuter. Le script simule des athlètes, des coachs, le superviseur et un visiteur, tente 85 actions permises ou interdites, puis annule tout. S'il se termine sans message « ÉCHEC », tout est conforme.
 5. Quand le client s'est inscrit sur le site, lui donner le rôle de superviseur général avec `supabase/sql/promouvoir-superviseur.sql` (en remplaçant l'adresse). Pour qu'il puisse aussi vérifier des fiches en tant que coach et apparaître dans le répertoire des coachs, il s'inscrit d'abord comme coach et remplit sa fiche ; la promotion conserve cette fiche.
 
 Après chaque nouvelle migration, on régénère les types TypeScript avec `npm run db:types` : l'autocomplétion de VS Code connaît alors toutes les tables et fonctions.
@@ -134,14 +134,17 @@ src/
   components/auth/   Formulaires d'inscription, de connexion et de mot de passe
   components/profile/ Formulaires de profil athlète et coach, palmarès, photo
   components/review/ File de vérification des coachs, liste « Mes athlètes »
-  components/supervisor/ Espace superviseur (comptes de coach, retraits, journal d'audit)
+  components/supervisor/ Espace superviseur (comptes de coach, retraits, médias, actualités, journal)
   components/directory/ Répertoires publics (filtres, cartes) et fiches athlète et coach
   app/api/photos/    Photos des fiches en ligne, à une adresse stable pour le partage
   lib/
     auth/            Actions serveur d'authentification, validation, redirections sûres
+    account/         Étape du compte connecté (boutons « Rejoindre » de l'accueil)
     profile/         Actions serveur du profil, validation, catégories de poids
     review/          Lecture de la file de vérification, décisions des coachs
     supervisor/      Lectures et actions de l'espace superviseur
+    media/ news/     Médias des disciplines (liens, images, vidéos par morceaux) et actualités
+    images/          Réduction des images dans le navigateur (WebP)
     directory/       Lectures des pages publiques (client « visiteur »), filtres d'adresse
     supabase/        Clients Supabase, types de la base, traduction des erreurs SQL
     theme.ts         Logique du thème clair / sombre

@@ -20,7 +20,9 @@
     "contact": "Contact",
     "login": "Log in",
     "join": "Join",
-    "account": "My account"
+    "account": "My account",
+    "completeProfile": "Fill in my profile",
+    "editProfile": "Edit my profile"
   },
   "language": {
     "label": "Language",
@@ -57,7 +59,35 @@
     "cta": {
       "title": "Athlete or coach?",
       "text": "Create your public profile. A coach reviews it, then it goes live and can be shared.",
-      "button": "Create my profile"
+      "button": "Create my profile",
+      "chooseRole": {
+        "title": "Your account is ready",
+        "text": "Tell us whether you are an athlete or a coach to prepare your public profile."
+      },
+      "draft": {
+        "title": "Your profile is waiting",
+        "text": "Fill it in and submit it: it goes live once verified."
+      },
+      "rejected": {
+        "title": "Your profile needs changes",
+        "text": "The reason is shown in your account. Correct the profile, then submit it again."
+      },
+      "pending": {
+        "title": "Profile under review",
+        "text": "Follow its progress from your account."
+      },
+      "approved": {
+        "title": "Your profile is live",
+        "text": "Share it or update it from your account."
+      },
+      "supervisor": {
+        "title": "Supervisor area",
+        "text": "Requests, profiles, media and news are managed from your account."
+      },
+      "member": {
+        "title": "Welcome back",
+        "text": "Find your profile and your requests in your account."
+      }
     }
   },
   "footer": {
@@ -99,7 +129,15 @@
     "nothing_to_review": "This profile is not flagged as modified.",
     "profile_not_published": "No live profile matches.",
     "unknown": "Something went wrong. Please try again in a moment.",
-    "withdraw_reason_required": "Give the reason for the removal."
+    "withdraw_reason_required": "Give the reason for the removal.",
+    "invalid_video_link": "Paste the address of a YouTube or Facebook video (starting with https://).",
+    "title_required": "Enter a title.",
+    "invalid_media_path": "This file cannot be saved.",
+    "media_type": "Choose an image (JPEG, PNG, WebP) or an MP4 video.",
+    "media_size_image": "The image is larger than 20 MB.",
+    "media_size_video": "The video is larger than 50 MB: shorten it or post it on YouTube, then paste the link.",
+    "upload_failed": "Upload failed. Please try again.",
+    "news_not_found": "Article not found."
   },
   "auth": {
     "signup": {
@@ -518,7 +556,9 @@
       "requests": "Requests",
       "profiles": "Profiles",
       "journal": "Log",
-      "label": "Supervisor area sections"
+      "label": "Supervisor area sections",
+      "media": "Media",
+      "news": "News"
     },
     "stats": {
       "coaches": "Coaches to approve",
@@ -640,6 +680,118 @@
         "media_deleted": "<b>{actor}</b> deleted the media “{title}”",
         "news_published": "<b>{actor}</b> published the news item “{title}”",
         "unknown": "<b>{actor}</b>: {action}"
+      }
+    },
+    "media": {
+      "title": "Media",
+      "usage": "{used} of {quota}",
+      "usageLabel": "Space used by uploaded files",
+      "disciplines": "Gallery to edit",
+      "add": "Add media",
+      "titleFr": "Title (French)",
+      "titleEn": "Title in English (optional)",
+      "titlePlaceholder": "Throwing techniques demo",
+      "link": {
+        "heading": "Video — paste a link",
+        "url": "YouTube or Facebook address",
+        "hint": "Recommended: no storage cost, smooth playback on 3G, and the video gains visibility on its original platform.",
+        "submit": "Add the link"
+      },
+      "or": "or",
+      "upload": {
+        "heading": "Upload a file",
+        "choose": "Choose a file",
+        "limits": "JPEG, PNG or WebP images · resized to 1,600 px",
+        "limitsVideo": "MP4 videos · 50 MB max",
+        "titleFirst": "Enter the title above first, then choose the file.",
+        "preparing": "Preparing the image…",
+        "chunks": "Uploading in chunks · {sent} / {total}",
+        "resume": "The upload resumes where it stopped if the connection drops.",
+        "cancel": "Cancel",
+        "cancelled": "Upload cancelled."
+      },
+      "gallery": {
+        "title": "{discipline} gallery",
+        "count": "{count, plural, =0 {No items} one {# item} other {# items}}",
+        "empty": "No media in this gallery yet.",
+        "hint": "The arrows change the display order on the public page.",
+        "up": "Move “{title}” up",
+        "down": "Move “{title}” down",
+        "edit": "Edit",
+        "save": "Save",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "confirmDelete": "Confirm deletion",
+        "open": "Open",
+        "kinds": {
+          "image": "Image",
+          "video": "Video",
+          "youtube": "YouTube link",
+          "facebook": "Facebook link"
+        }
+      },
+      "note": "Images are converted to WebP and resized on upload, to keep each page within a 600 KB budget.",
+      "done": {
+        "linkAdded": "Link added at the top of the gallery.",
+        "imageAdded": "Image added at the top of the gallery.",
+        "videoAdded": "Video added at the top of the gallery.",
+        "titlesSaved": "Titles saved.",
+        "orderSaved": "New order saved.",
+        "mediaDeleted": "Media deleted."
+      }
+    },
+    "news": {
+      "title": "News",
+      "new": "New article",
+      "empty": "No news yet.",
+      "status": {
+        "draft": "Draft",
+        "published": "Published"
+      },
+      "publishedOn": "Published on {date}",
+      "updatedOn": "Edited on {date}",
+      "edit": "Edit",
+      "back": "All news",
+      "editorNew": "New article",
+      "editorEdit": "Edit article",
+      "sections": {
+        "fr": "French",
+        "en": "English (optional)",
+        "cover": "Cover image",
+        "publication": "Publication"
+      },
+      "fields": {
+        "title": "Title",
+        "excerpt": "Standfirst",
+        "excerptHint": "Two or three lines, shown in the news list.",
+        "body": "Text",
+        "bodyHint": "Separate paragraphs with a blank line."
+      },
+      "enHint": "Without an English version, the English page shows the French text.",
+      "address": "Address: {path}",
+      "addressDraft": "The address follows the title until the first publication, then stays fixed.",
+      "cover": {
+        "choose": "Choose an image",
+        "replace": "Replace the image",
+        "remove": "Remove the image",
+        "alt": "Article cover",
+        "hint": "JPEG, PNG or WebP, resized to 1,600 px WebP."
+      },
+      "save": "Save draft",
+      "saveChanges": "Save changes",
+      "publish": "Publish",
+      "unpublish": "Unpublish",
+      "delete": "Delete article",
+      "confirmDelete": "Confirm deletion",
+      "deleteWarning": "The article and its image will be permanently deleted.",
+      "cancel": "Cancel",
+      "saving": "Saving…",
+      "done": {
+        "saved": "Changes saved.",
+        "published": "Article published.",
+        "unpublished": "Article unpublished: it is a draft again.",
+        "supprimee": "Article deleted.",
+        "erreur": "Deletion failed. Please try again."
       }
     }
   }

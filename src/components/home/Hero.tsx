@@ -1,21 +1,22 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { ButtonLink } from "@/components/ui/ButtonLink";
+import { AccountButton } from "./AccountButton";
 
 export function Hero() {
   const t = useTranslations("home.hero");
 
   return (
-    <section className="relative flex min-h-[480px] flex-col justify-end border-b-2 border-gold hatch md:min-h-[560px]">
+    <section className="relative flex min-h-120 flex-col justify-end border-b-2 border-gold hatch md:min-h-90">
       {/* Emblème : doré en thème sombre, noir en thème clair */}
       <div className="absolute inset-x-0 top-6.5 flex justify-center md:top-1/2 md:right-[8%] md:left-auto md:-translate-y-1/2">
         <Image
-          src="/brand/logo-or.png"
+          src="/brand/logo-or-alt.png"
           alt={t("emblem")}
-          width={167}
-          height={208}
+          width={280}
+          height={350}
           priority
-          className="hidden w-28 opacity-90 md:w-52 dark:block"
+          className="hidden w-28 md:w-56 dark:block"
         />
         <Image
           src="/brand/logo-noir.png"
@@ -23,16 +24,18 @@ export function Hero() {
           width={256}
           height={320}
           priority
-          className="w-28 opacity-90 md:w-52 dark:hidden"
+          className="w-28 md:w-56 dark:hidden"
         />
       </div>
 
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 bottom-0 h-[260px] bg-linear-to-b from-[rgb(var(--hero-fade)/0)] via-[rgb(var(--hero-fade)/0.86)] to-background md:h-full md:bg-linear-to-r md:from-background md:via-[rgb(var(--hero-fade)/0.8)] md:to-[rgb(var(--hero-fade)/0)]"
+        className="absolute inset-x-0 bottom-0 h-65 bg-linear-to-b from-[rgb(var(--hero-fade)/0)] via-[rgb(var(--hero-fade)/0.86)] to-background md:h-full md:bg-linear-to-r md:from-background md:via-[rgb(var(--hero-fade)/0.8)] md:to-[rgb(var(--hero-fade)/0)]"
       />
 
-      <div className="relative mx-auto w-full max-w-6xl px-4 pb-6 md:pb-16">
+      {/* Marge haute : sous l'emblème sur mobile, sous l'en-tête sur ordinateur,
+          même quand le contenu dépasse la hauteur minimale */}
+      <div className="relative mx-auto w-full max-w-6xl px-4 pt-48 pb-6 md:pt-12 md:pb-16">
         <div className="flex max-w-xl flex-col gap-3">
           <p className="eyebrow tracking-[0.22em] text-gold-ink">{t("eyebrow")}</p>
           <h1 className="font-display text-[44px] leading-[0.94] font-extrabold tracking-[-0.01em] text-balance uppercase md:text-7xl">
@@ -41,13 +44,17 @@ export function Hero() {
           <p className="max-w-80 text-sm leading-normal text-muted md:max-w-md md:text-base">
             {t("lead")}
           </p>
-          <div className="mt-1.5 flex gap-2.5">
-            <ButtonLink href="/#disciplines" className="flex-1 md:flex-none">
+          {/* Sur mobile, les deux boutons passent l'un sous l'autre quand le
+              libellé du second s'allonge (« Compléter mon profil ») */}
+          <div className="mt-1.5 flex flex-wrap gap-2.5">
+            <ButtonLink href="/#disciplines" className="flex-[1_1_13.5rem] md:flex-none">
               {t("primary")}
             </ButtonLink>
-            <ButtonLink href="/inscription" variant="outline" className="w-27 md:w-auto">
-              {t("secondary")}
-            </ButtonLink>
+            <AccountButton
+              guestLabel={t("secondary")}
+              variant="outline"
+              className="flex-[1_0_auto] md:flex-none"
+            />
           </div>
         </div>
       </div>

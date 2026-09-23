@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { createClient } from "@/lib/supabase/client";
+import { resizeImage } from "@/lib/images/resize";
 import { setProfilePhotoAction } from "@/lib/profile/actions";
 import { useErrorText } from "@/components/forms/useErrorText";
 import type { Locale } from "@/i18n/routing";
@@ -10,27 +11,6 @@ import type { Locale } from "@/i18n/routing";
 const ACCEPTED = ["image/jpeg", "image/png", "image/webp"];
 const MAX_INPUT_BYTES = 20 * 1024 * 1024; // photo d'origine, avant réduction
 const MAX_SIDE = 800;
-
-// Réduction dans le navigateur : 800 px au plus sur le grand côté, WebP
-// (ou JPEG si le navigateur ne sait pas encoder le WebP). Réencoder l'image
-// supprime au passage ses métadonnées EXIF, dont la position GPS.
-async function resizeImage(file: File): Promise<{ blob: Blob; ext: "webp" | "jpg" }> {
-  const bitmap = await createImageBitmap(file, { imageOrientation: "from-image" });
-  const scale = Math.min(1, MAX_SIDE / Math.max(bitmap.width, bitmap.height));
-  const canvas = document.createElement("canvas");
-  canvas.width = Math.round(bitmap.width * scale);
-  canvas.height = Math.round(bitmap.height * scale);
-  canvas.getContext("2d")?.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
-  bitmap.close();
-
-  const encode = (type: string) =>
-    new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, type, 0.85));
-  const webp = await encode("image/webp");
-  if (webp?.type === "image/webp") return { blob: webp, ext: "webp" };
-  const jpeg = await encode("image/jpeg");
-  if (!jpeg) throw new Error("encode_failed");
-  return { blob: jpeg, ext: "jpg" };
-}
 
 export function PhotoUploader({
   userId,
@@ -56,7 +36,7 @@ export function PhotoUploader({
 
     setBusy(true);
     try {
-      const { blob, ext } = await resizeImage(file);
+      const { blob, ext } = await resizeImage(file, MAX_SIDE);
       const path = `${userId}/photo-${Date.now()}.${ext}`;
       const supabase = createClient();
       const { error: uploadError } = await supabase.storage

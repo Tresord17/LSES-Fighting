@@ -17,6 +17,26 @@ const TABS = [
     ),
   },
   {
+    href: "/mon-espace/superviseur/medias",
+    key: "media",
+    icon: (
+      <>
+        <rect x="3" y="5" width="18" height="14" />
+        <path d="M3 15l5-5 4 4 3-3 6 6" />
+      </>
+    ),
+  },
+  {
+    href: "/mon-espace/superviseur/actualites",
+    key: "news",
+    icon: (
+      <>
+        <rect x="4" y="4" width="16" height="16" />
+        <path d="M8 9h8M8 13h8M8 17h4" />
+      </>
+    ),
+  },
+  {
     href: "/mon-espace/superviseur/journal",
     key: "journal",
     icon: (
@@ -35,15 +55,18 @@ export function SupervisorNav() {
 
   return (
     <nav aria-label={t("label")} className="border-y border-line">
-      <ul className="grid grid-cols-3">
+      <ul className="grid grid-cols-5">
         {TABS.map((tab) => {
-          const active = pathname === tab.href;
+          // l'onglet reste actif sur ses sous-pages (édition d'une actualité)
+          const active =
+            pathname === tab.href ||
+            (tab.href !== "/mon-espace/superviseur" && pathname.startsWith(`${tab.href}/`));
           return (
             <li key={tab.key}>
               <Link
                 href={tab.href}
                 aria-current={active ? "page" : undefined}
-                className={`-mt-px flex h-15 flex-col items-center justify-center gap-1.25 border-t-2 font-mono text-[10px] tracking-[0.08em] uppercase transition-colors ${
+                className={`-mt-px flex h-15 flex-col items-center justify-center gap-1.25 border-t-2 font-mono text-[9px] tracking-[0.06em] uppercase transition-colors sm:text-[10px] sm:tracking-[0.08em] ${
                   active
                     ? "border-admin-fill text-admin"
                     : "border-transparent text-subtle hover:text-foreground"

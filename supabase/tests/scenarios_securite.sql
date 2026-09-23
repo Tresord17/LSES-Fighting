@@ -359,6 +359,23 @@ select pg_temp.ok('Photo : un fichier non déclaré sur la fiche reste privé',
 select pg_temp.act_as('coach');
 select pg_temp.fails('Médias (fichiers) : dépôt refusé à un coach',
   'insert into storage.objects (bucket_id, name) values (''media'', ''sambo/test.webp'')', 'row-level security');
+select pg_temp.act_as('superviseur');
+select pg_temp.succeeds('Médias (fichiers) : dépôt par le superviseur',
+  'insert into storage.objects (bucket_id, name) values (''media'', ''sambo/galerie.webp'')');
+select pg_temp.ok('Médias (fichiers) : lisibles par le superviseur (nécessaire à la suppression)',
+  pg_temp.count_of('select 1 from storage.objects where bucket_id = ''media'' and name = ''sambo/galerie.webp''') = 1);
+select pg_temp.act_as('coach');
+select pg_temp.ok('Médias (fichiers) : contenu du bucket non listable par un coach',
+  pg_temp.count_of('select 1 from storage.objects where bucket_id = ''media''') = 0);
+select pg_temp.act_as('anon');
+select pg_temp.ok('Médias (fichiers) : contenu du bucket non listable par un visiteur',
+  pg_temp.count_of('select 1 from storage.objects where bucket_id = ''media''') = 0);
+select pg_temp.act_as('superviseur');
+select pg_temp.succeeds('Médias (fichiers) : suppression par le superviseur',
+  'delete from storage.objects where bucket_id = ''media'' and name = ''sambo/galerie.webp''');
+select pg_temp.as_admin();
+select pg_temp.ok('Médias (fichiers) : fichier effectivement supprimé',
+  pg_temp.count_of('select 1 from storage.objects where bucket_id = ''media'' and name = ''sambo/galerie.webp''') = 0);
 
 -- ---------------------------------------------------------------------
 -- Retrait du consentement et retrait par le superviseur

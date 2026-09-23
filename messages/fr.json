@@ -20,7 +20,9 @@
     "contact": "Contact",
     "login": "Connexion",
     "join": "Rejoindre",
-    "account": "Mon espace"
+    "account": "Mon espace",
+    "completeProfile": "Compléter mon profil",
+    "editProfile": "Modifier mon profil"
   },
   "language": {
     "label": "Langue",
@@ -57,7 +59,35 @@
     "cta": {
       "title": "Athlète ou coach ?",
       "text": "Créez votre fiche publique. Un coach la vérifie, puis elle est mise en ligne et devient partageable.",
-      "button": "Créer mon profil"
+      "button": "Créer mon profil",
+      "chooseRole": {
+        "title": "Votre compte est créé",
+        "text": "Indiquez si vous êtes athlète ou coach pour préparer votre fiche publique."
+      },
+      "draft": {
+        "title": "Votre fiche vous attend",
+        "text": "Complétez-la puis envoyez-la : elle est mise en ligne une fois vérifiée."
+      },
+      "rejected": {
+        "title": "Votre fiche est à reprendre",
+        "text": "Le motif est indiqué dans votre espace. Corrigez la fiche, puis renvoyez-la."
+      },
+      "pending": {
+        "title": "Fiche en cours de vérification",
+        "text": "Vous suivez son avancement depuis votre espace."
+      },
+      "approved": {
+        "title": "Votre fiche est en ligne",
+        "text": "Partagez-la ou mettez-la à jour depuis votre espace."
+      },
+      "supervisor": {
+        "title": "Espace superviseur",
+        "text": "Demandes, fiches, médias et actualités se gèrent depuis votre espace."
+      },
+      "member": {
+        "title": "Bon retour",
+        "text": "Retrouvez votre fiche et vos demandes dans votre espace."
+      }
     }
   },
   "footer": {
@@ -99,7 +129,15 @@
     "nothing_to_review": "Cette fiche n'est pas signalée comme modifiée.",
     "profile_not_published": "Aucune fiche en ligne ne correspond.",
     "unknown": "Une erreur inattendue est survenue. Réessayez dans un instant.",
-    "withdraw_reason_required": "Indiquez le motif du retrait."
+    "withdraw_reason_required": "Indiquez le motif du retrait.",
+    "invalid_video_link": "Collez l'adresse d'une vidéo YouTube ou Facebook (commençant par https://).",
+    "title_required": "Indiquez un titre.",
+    "invalid_media_path": "Ce fichier ne peut pas être enregistré.",
+    "media_type": "Choisissez une image (JPEG, PNG, WebP) ou une vidéo MP4.",
+    "media_size_image": "L'image dépasse 20 Mo.",
+    "media_size_video": "La vidéo dépasse 50 Mo : raccourcissez-la ou publiez-la sur YouTube, puis collez le lien.",
+    "upload_failed": "L'envoi a échoué. Réessayez.",
+    "news_not_found": "Actualité introuvable."
   },
   "auth": {
     "signup": {
@@ -518,7 +556,9 @@
       "requests": "Demandes",
       "profiles": "Fiches",
       "journal": "Journal",
-      "label": "Rubriques de l'espace superviseur"
+      "label": "Rubriques de l'espace superviseur",
+      "media": "Médias",
+      "news": "Actualités"
     },
     "stats": {
       "coaches": "Coachs à valider",
@@ -640,6 +680,118 @@
         "media_deleted": "<b>{actor}</b> a supprimé le média « {title} »",
         "news_published": "<b>{actor}</b> a publié l'actualité « {title} »",
         "unknown": "<b>{actor}</b> : {action}"
+      }
+    },
+    "media": {
+      "title": "Médias",
+      "usage": "{used} sur {quota}",
+      "usageLabel": "Espace occupé par les fichiers déposés",
+      "disciplines": "Galerie à modifier",
+      "add": "Ajouter un média",
+      "titleFr": "Titre",
+      "titleEn": "Titre en anglais (facultatif)",
+      "titlePlaceholder": "Démonstration de projections",
+      "link": {
+        "heading": "Vidéo — coller un lien",
+        "url": "Adresse YouTube ou Facebook",
+        "hint": "Voie recommandée : aucun coût de stockage, lecture fluide en 3G, et la vidéo gagne en visibilité sur la plateforme d'origine.",
+        "submit": "Ajouter le lien"
+      },
+      "or": "ou",
+      "upload": {
+        "heading": "Téléverser un fichier",
+        "choose": "Choisir un fichier",
+        "limits": "Images JPEG, PNG ou WebP · réduites à 1 600 px",
+        "limitsVideo": "Vidéos MP4 · 50 Mo au plus",
+        "titleFirst": "Indiquez d'abord le titre ci-dessus, puis choisissez le fichier.",
+        "preparing": "Préparation de l'image…",
+        "chunks": "Envoi par morceaux · {sent} / {total}",
+        "resume": "L'envoi reprend là où il s'est arrêté si la connexion coupe.",
+        "cancel": "Annuler",
+        "cancelled": "Envoi annulé."
+      },
+      "gallery": {
+        "title": "Galerie {discipline}",
+        "count": "{count, plural, =0 {Aucun élément} one {# élément} other {# éléments}}",
+        "empty": "Aucun média dans cette galerie pour l'instant.",
+        "hint": "Les flèches changent l'ordre d'affichage sur la page publique.",
+        "up": "Monter « {title} »",
+        "down": "Descendre « {title} »",
+        "edit": "Modifier",
+        "save": "Enregistrer",
+        "cancel": "Annuler",
+        "delete": "Supprimer",
+        "confirmDelete": "Confirmer la suppression",
+        "open": "Ouvrir",
+        "kinds": {
+          "image": "Image",
+          "video": "Vidéo",
+          "youtube": "Lien YouTube",
+          "facebook": "Lien Facebook"
+        }
+      },
+      "note": "Les images sont converties en WebP et redimensionnées à l'envoi, pour tenir le budget de 600 Ko par page.",
+      "done": {
+        "linkAdded": "Lien ajouté en tête de la galerie.",
+        "imageAdded": "Image ajoutée en tête de la galerie.",
+        "videoAdded": "Vidéo ajoutée en tête de la galerie.",
+        "titlesSaved": "Titres enregistrés.",
+        "orderSaved": "Nouvel ordre enregistré.",
+        "mediaDeleted": "Média supprimé."
+      }
+    },
+    "news": {
+      "title": "Actualités",
+      "new": "Nouvelle actualité",
+      "empty": "Aucune actualité pour l'instant.",
+      "status": {
+        "draft": "Brouillon",
+        "published": "Publiée"
+      },
+      "publishedOn": "Publiée le {date}",
+      "updatedOn": "Modifiée le {date}",
+      "edit": "Modifier",
+      "back": "Toutes les actualités",
+      "editorNew": "Nouvelle actualité",
+      "editorEdit": "Modifier l'actualité",
+      "sections": {
+        "fr": "Français",
+        "en": "English (facultatif)",
+        "cover": "Image de couverture",
+        "publication": "Publication"
+      },
+      "fields": {
+        "title": "Titre",
+        "excerpt": "Chapeau",
+        "excerptHint": "Deux ou trois lignes, reprises dans la liste des actualités.",
+        "body": "Texte",
+        "bodyHint": "Séparez les paragraphes par une ligne vide."
+      },
+      "enHint": "Sans version anglaise, la page anglaise affiche le texte français.",
+      "address": "Adresse : {path}",
+      "addressDraft": "L'adresse suit le titre jusqu'à la première publication, puis ne change plus.",
+      "cover": {
+        "choose": "Choisir une image",
+        "replace": "Remplacer l'image",
+        "remove": "Retirer l'image",
+        "alt": "Couverture de l'actualité",
+        "hint": "JPEG, PNG ou WebP, réduite à 1 600 px en WebP."
+      },
+      "save": "Enregistrer le brouillon",
+      "saveChanges": "Enregistrer les modifications",
+      "publish": "Publier",
+      "unpublish": "Retirer de la publication",
+      "delete": "Supprimer l'actualité",
+      "confirmDelete": "Confirmer la suppression",
+      "deleteWarning": "L'actualité et son image seront supprimées définitivement.",
+      "cancel": "Annuler",
+      "saving": "Enregistrement…",
+      "done": {
+        "saved": "Modifications enregistrées.",
+        "published": "Actualité publiée.",
+        "unpublished": "Actualité retirée de la publication : elle redevient un brouillon.",
+        "supprimee": "Actualité supprimée.",
+        "erreur": "La suppression a échoué. Réessayez."
       }
     }
   }

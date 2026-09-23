@@ -1,6 +1,6 @@
 # Espace superviseur
 
-L'espace superviseur (`/fr/mon-espace/superviseur`) est réservé au compte qui porte le rôle de superviseur général. Il reprend la maquette du back-office : trois indicateurs, puis trois onglets, « Demandes », « Fiches » et « Journal ». Les onglets « Médias » et « Actualités » viendront à l'étape suivante.
+L'espace superviseur (`/fr/mon-espace/superviseur`) est réservé au compte qui porte le rôle de superviseur général. Il reprend la maquette du back-office : trois indicateurs, puis cinq onglets, « Demandes », « Fiches », « Médias », « Actualités » et « Journal ».
 
 ## Demandes
 
@@ -11,6 +11,20 @@ Viennent ensuite les comptes de coach à valider. Chaque carte présente les dis
 ## Fiches
 
 L'onglet liste les fiches en ligne, athlètes ou coachs, avec une recherche par nom ou par ville. « Retirer du site » demande un motif puis appelle `withdraw_profile` : la fiche quitte aussitôt les pages publiques et repasse à l'état « à corriger », et la personne peut la soumettre de nouveau. Retirer un coach lui ôte aussi le droit de vérifier des fiches. Le motif est inscrit au journal d'audit.
+
+## Médias
+
+L'onglet gère les galeries des pages Sambo et MMA. Le lien YouTube ou Facebook est la voie recommandée : rien n'est stocké, la lecture reste fluide en 3G et la vidéo gagne en visibilité sur sa plateforme. L'adresse est vérifiée avant l'envoi puis par la base, qui n'accepte que ces deux plateformes.
+
+Le téléversement reste possible. Une image (JPEG, PNG ou WebP, 20 Mo au plus avant réduction) est réduite dans le navigateur à 1 600 pixels en WebP, ce qui retire ses métadonnées et tient le budget de 600 Ko par page. Une vidéo MP4 est limitée à 50 Mo, le plafond par fichier du plan gratuit de Supabase ; elle part par morceaux de 6 Mo (protocole TUS), avec une barre de progression et un bouton « Annuler ». Une coupure de connexion est reprise automatiquement, et un envoi interrompu repart de là où il s'était arrêté si l'on choisit de nouveau le même fichier. Le titre est demandé avant le fichier ; si l'enregistrement échoue, le fichier déposé est aussitôt supprimé pour ne pas laisser d'orphelin.
+
+Chaque élément de la galerie peut être déplacé avec les flèches (l'ordre est celui de la page publique), renommé ou supprimé avec son fichier. L'espace occupé par les fichiers est affiché en tête de l'onglet. Les ajouts et suppressions sont inscrits au journal par la base.
+
+## Actualités
+
+La liste montre les brouillons et les actualités publiées. L'éditeur demande un titre en français ; le chapeau, le texte (paragraphes séparés par une ligne vide), la version anglaise et l'image de couverture sont facultatifs. Sans version anglaise, la page anglaise affichera le texte français.
+
+« Enregistrer le brouillon » garde l'article hors ligne, « Publier » le met en ligne et l'inscrit au journal, « Retirer de la publication » le repasse en brouillon. L'adresse (`/fr/actualites/<adresse>`) suit le titre tant que l'article n'a jamais été publié, puis ne change plus pour ne pas casser les liens partagés ; une adresse déjà prise reçoit un suffixe (`-2`). La suppression efface aussi l'image de couverture. Les pages publiques des actualités et des disciplines viendront à l'étape suivante.
 
 ## Journal
 
