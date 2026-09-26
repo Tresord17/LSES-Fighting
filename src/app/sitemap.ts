@@ -3,8 +3,9 @@ import { routing } from "@/i18n/routing";
 import { getSiteUrl } from "@/lib/auth/site-url";
 import { createPublicClient } from "@/lib/supabase/public";
 
-// Plan du site pour les moteurs de recherche : pages publiques et fiches
-// en ligne, dans les deux langues. Recalculé au plus toutes les heures.
+// Plan du site pour les moteurs de recherche : pages publiques, fiches en
+// ligne et actualités publiées, dans les deux langues. Recalculé au plus
+// toutes les heures.
 export const revalidate = 3600;
 
 const PAGES = ["", "/disciplines/sambo", "/disciplines/mma", "/athletes", "/coachs", "/actualites"];
@@ -27,7 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   if (!supabase) return entries;
 
   try {
-    const [{ data: athletes }, { data: coaches }] = await Promise.all([
+    const [{ data: athletes }, { data: coaches }, { data: news }] = await Promise.all([
       supabase
         .from("athletes")
         .select("slug, updated_at")
@@ -38,11 +39,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         .select("slug, updated_at")
         .eq("status", "approved")
         .not("slug", "is", null),
+      supabase.from("news").select("slug, updated_at").eq("status", "published"),
     ]);
     for (const row of athletes ?? []) entries.push(entry(`/athletes/${row.slug}`, row.updated_at));
     for (const row of coaches ?? []) entries.push(entry(`/coachs/${row.slug}`, row.updated_at));
+    for (const row of news ?? []) entries.push(entry(`/actualites/${row.slug}`, row.updated_at));
   } catch (error) {
-    console.error("Plan du site : lecture des fiches impossible", error);
+    console.error("Plan du site : lecture des fiches ou des actualités impossible", error);
   }
   return entries;
 }

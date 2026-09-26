@@ -49,7 +49,8 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
     title: { default: t("title"), template: "%s · LSES Fighting" },
     description: t("description"),
-    icons: { icon: "/brand/logo-or.png" },
+    // Icônes légères tirées du logo doré (le logo complet pèse plus de 100 Ko)
+    icons: { icon: "/brand/favicon.png", apple: "/brand/apple-touch-icon.png" },
   };
 }
 

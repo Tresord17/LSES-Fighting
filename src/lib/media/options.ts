@@ -14,6 +14,15 @@ export const IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp"];
 export const IMAGE_MAX_INPUT_BYTES = 20 * 1024 * 1024;
 export const IMAGE_MAX_SIDE = 1600;
 
+// Vignette rangée à côté de chaque fichier déposé (image réduite, ou image
+// extraite d'une vidéo) : les galeries et les listes ne chargent qu'elle,
+// quelques dizaines de Ko, et le fichier complet seulement à la demande.
+// sambo/1790…-a1b2c3d4e5.webp → sambo/1790…-a1b2c3d4e5.vignette.webp
+export const THUMB_MAX_SIDE = 640;
+export function thumbPath(path: string) {
+  return `${path.replace(/\.[a-z0-9]+$/i, "")}.vignette.webp`;
+}
+
 // Vidéos : MP4 uniquement, 50 Mo par fichier (plafond du plan gratuit de
 // Supabase, fixé aussi sur le bucket).
 export const VIDEO_TYPES = ["video/mp4"];

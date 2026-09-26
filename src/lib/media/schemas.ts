@@ -38,7 +38,12 @@ export const mediaFileSchema = z
     discipline: z.enum(DISCIPLINES, { error: "invalid_choice" }),
     kind: z.enum(["image", "video"]),
     path: z.string().max(300),
-    size: z.number().int().min(1).max(VIDEO_MAX_BYTES),
+    // fichier et vignette : la vidéo seule est plafonnée à VIDEO_MAX_BYTES
+    size: z
+      .number()
+      .int()
+      .min(1)
+      .max(VIDEO_MAX_BYTES + 2 * 1024 * 1024),
     duration: z
       .number()
       .min(0)

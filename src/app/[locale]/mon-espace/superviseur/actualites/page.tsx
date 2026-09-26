@@ -6,6 +6,7 @@ import { loadNewsList } from "@/lib/news/data";
 import { Link } from "@/i18n/navigation";
 import { FormAlert } from "@/components/forms/FormAlert";
 import { ReviewSection } from "@/components/review/ReviewParts";
+import { Thumb } from "@/components/ui/Thumb";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("supervisor.news");
@@ -51,12 +52,10 @@ export default async function NewsListPage({
                   href={`/mon-espace/superviseur/actualites/${item.id}`}
                   className="flex items-center gap-3 bg-surface p-2.75 transition-colors hover:bg-line/40"
                 >
-                  {item.coverUrl ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={item.coverUrl}
-                      alt=""
-                      loading="lazy"
+                  {item.coverThumbUrl ? (
+                    <Thumb
+                      src={item.coverThumbUrl}
+                      fallback={item.coverUrl}
                       className="h-12.5 w-17 shrink-0 object-cover"
                     />
                   ) : (

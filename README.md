@@ -127,6 +127,8 @@ src/
   components/
     layout/          En-tête, pied de page, menu mobile, sélecteurs de langue et de thème
     home/            Sections de la page d'accueil
+    discipline/      Galerie d'images et vidéos chargées au clic des pages Sambo et MMA
+    news/            Lignes et article à la une des actualités publiques
     ui/              Briques réutilisables (boutons, titres de section, icônes)
   fonts/             Polices auto-hébergées (Saira Condensed, IBM Plex Sans et Mono)
   i18n/              Configuration de next-intl (langues, navigation, chargement des textes)
@@ -149,14 +151,13 @@ src/
     supabase/        Clients Supabase, types de la base, traduction des erreurs SQL
     theme.ts         Logique du thème clair / sombre
     site.ts          Menu principal et liens vers les réseaux sociaux
-    demo-data.ts     Actualités de démonstration, en attendant l'espace superviseur
   proxy.ts           Proxy Next.js 16 : choix de la langue puis session Supabase
 supabase/
   migrations/        Schéma de la base, règles d'accès, circuit de validation, stockage, recherche
   tests/             Scénarios de sécurité exécutables dans le SQL Editor
   sql/               Scripts d'administration (promotion du superviseur)
   templates/         Modèles des e-mails de confirmation et de mot de passe oublié
-docs/                Documentation technique (base, authentification, profil, vérification, répertoires, superviseur)
+docs/                Documentation technique (base, authentification, profil, vérification, répertoires, superviseur, vitrine)
 ```
 
 ## 9. Conventions

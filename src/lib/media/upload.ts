@@ -4,20 +4,80 @@ import * as tus from "tus-js-client";
 import { createClient } from "@/lib/supabase/client";
 import { getSupabaseEnv } from "@/lib/supabase/env";
 import { resizeImage, uniqueName } from "@/lib/images/resize";
-import { IMAGE_MAX_SIDE, MEDIA_BUCKET, type MediaFolder } from "./options";
+import {
+  IMAGE_MAX_SIDE,
+  MEDIA_BUCKET,
+  THUMB_MAX_SIDE,
+  thumbPath,
+  type MediaFolder,
+} from "./options";
 
 // Dépôts dans le bucket public « media », depuis le navigateur du
 // superviseur. La base n'accepte ces écritures que de sa part.
 
-// Image : réduite et réencodée, puis envoyée en une fois (quelques centaines de Ko)
-export async function uploadImage(file: File, folder: MediaFolder) {
-  const { blob, ext } = await resizeImage(file, IMAGE_MAX_SIDE, 0.82);
-  const path = `${folder}/${uniqueName(ext)}`;
-  const { error } = await createClient()
+function storeFile(path: string, blob: Blob) {
+  return createClient()
     .storage.from(MEDIA_BUCKET)
     .upload(path, blob, { contentType: blob.type, cacheControl: "31536000", upsert: false });
+}
+
+// Vignette d'un fichier déjà déposé. Son échec n'empêche pas l'ajout : les
+// pages publiques se rabattent alors sur le fichier complet.
+export async function uploadThumb(path: string, blob: Blob | null) {
+  if (!blob) return 0;
+  const { error } = await storeFile(thumbPath(path), blob);
+  return error ? 0 : blob.size;
+}
+
+// Image : réduite et réencodée (quelques centaines de Ko), plus sa vignette.
+// La taille rendue couvre les deux fichiers, pour le compteur d'espace.
+export async function uploadImage(file: File, folder: MediaFolder) {
+  const [{ blob, ext }, thumb] = await Promise.all([
+    resizeImage(file, IMAGE_MAX_SIDE, 0.82),
+    resizeImage(file, THUMB_MAX_SIDE, 0.75).then(
+      (result) => result.blob,
+      () => null,
+    ),
+  ]);
+  const path = `${folder}/${uniqueName(ext)}`;
+  const { error } = await storeFile(path, blob);
   if (error) throw error;
-  return { path, size: blob.size };
+  return { path, size: blob.size + (await uploadThumb(path, thumb)) };
+}
+
+// Image extraite d'une vidéo (vers la première seconde), qui sert d'affiche
+// au lecteur public tant que le visiteur n'a pas lancé la lecture
+export function videoPoster(file: File): Promise<Blob | null> {
+  return new Promise((resolve) => {
+    const video = document.createElement("video");
+    const url = URL.createObjectURL(file);
+    let settled = false;
+    const done = (blob: Blob | null) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      URL.revokeObjectURL(url);
+      resolve(blob);
+    };
+    const timer = setTimeout(() => done(null), 15000);
+    video.muted = true;
+    video.playsInline = true;
+    video.preload = "auto";
+    video.onloadedmetadata = () => {
+      video.currentTime = Math.min(1, Number.isFinite(video.duration) ? video.duration / 2 : 0);
+    };
+    video.onseeked = () => {
+      if (!video.videoWidth || !video.videoHeight) return done(null);
+      const scale = Math.min(1, THUMB_MAX_SIDE / Math.max(video.videoWidth, video.videoHeight));
+      const canvas = document.createElement("canvas");
+      canvas.width = Math.round(video.videoWidth * scale);
+      canvas.height = Math.round(video.videoHeight * scale);
+      canvas.getContext("2d")?.drawImage(video, 0, 0, canvas.width, canvas.height);
+      canvas.toBlob((blob) => done(blob), "image/webp", 0.75);
+    };
+    video.onerror = () => done(null);
+    video.src = url;
+  });
 }
 
 // Adresse de l'envoi par morceaux. Supabase conseille le nom d'hôte direct

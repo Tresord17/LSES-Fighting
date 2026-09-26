@@ -7,7 +7,7 @@ import { getDbErrorKey } from "@/lib/supabase/errors";
 import { fieldErrors } from "@/lib/auth/schemas";
 import type { Locale } from "@/i18n/routing";
 import type { ReviewResult } from "@/lib/review/actions";
-import { MEDIA_BUCKET } from "./options";
+import { MEDIA_BUCKET, thumbPath } from "./options";
 import {
   mediaFileSchema,
   mediaIdSchema,
@@ -23,6 +23,8 @@ import {
 function refresh(locale: Locale) {
   revalidatePath(`/${locale}/mon-espace/superviseur/medias`);
   revalidatePath("/[locale]/disciplines/[slug]", "page");
+  // cartes des disciplines de l'accueil, illustrées par la première image
+  revalidatePath("/[locale]", "page");
 }
 
 async function supervisorClient() {
@@ -105,7 +107,7 @@ export async function addMediaFileAction(input: {
   if (!parsed.success) {
     // chemin ou saisie refusés : le fichier déposé ne doit pas rester orphelin
     if (account && typeof input.path === "string" && /^(sambo|mma)\//.test(input.path)) {
-      await account.supabase.storage.from(MEDIA_BUCKET).remove([input.path]);
+      await account.supabase.storage.from(MEDIA_BUCKET).remove([input.path, thumbPath(input.path)]);
     }
     return fail("fix_fields", fieldErrors(parsed.error));
   }
@@ -125,7 +127,7 @@ export async function addMediaFileAction(input: {
     created_by: userId,
   });
   if (error) {
-    await supabase.storage.from(MEDIA_BUCKET).remove([path]);
+    await supabase.storage.from(MEDIA_BUCKET).remove([path, thumbPath(path)]);
     return fail(getDbErrorKey(error));
   }
   refresh(locale);
@@ -192,7 +194,11 @@ export async function deleteMediaAction(formData: FormData): Promise<ReviewResul
     .maybeSingle();
   const { error } = await supabase.from("media").delete().eq("id", parsed.data.id);
   if (error) return fail(getDbErrorKey(error));
-  if (row?.storage_path) await supabase.storage.from(MEDIA_BUCKET).remove([row.storage_path]);
+  if (row?.storage_path) {
+    await supabase.storage
+      .from(MEDIA_BUCKET)
+      .remove([row.storage_path, thumbPath(row.storage_path)]);
+  }
 
   refresh(parsed.data.locale);
   return { status: "success", message: "mediaDeleted" };

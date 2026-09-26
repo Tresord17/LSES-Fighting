@@ -18,7 +18,13 @@ import {
   formatBytes,
   formatDuration,
 } from "@/lib/media/options";
-import { uploadImage, uploadVideo, videoDuration } from "@/lib/media/upload";
+import {
+  uploadImage,
+  uploadThumb,
+  uploadVideo,
+  videoDuration,
+  videoPoster,
+} from "@/lib/media/upload";
 import type { Discipline } from "@/lib/profile/options";
 import { Field } from "@/components/forms/Field";
 import { useErrorText } from "@/components/forms/useErrorText";
@@ -121,7 +127,10 @@ function MediaRow({
               alt=""
               loading="lazy"
               onError={(event) => {
-                event.currentTarget.style.display = "none";
+                // vignette absente : image complète, sinon rien
+                const img = event.currentTarget;
+                if (item.fallbackUrl && img.src !== item.fallbackUrl) img.src = item.fallbackUrl;
+                else img.style.display = "none";
               }}
               className="h-full w-full object-cover"
             />
@@ -341,6 +350,7 @@ export function MediaManager({
         setPreparing(false);
       } else {
         duration = await videoDuration(file);
+        const poster = videoPoster(file);
         setProgress({ name: file.name, sent: 0, total: file.size });
         const upload = await uploadVideo(file, discipline, (sent, total) =>
           setProgress((current) => current && { ...current, sent, total }),
@@ -351,7 +361,7 @@ export function MediaManager({
         }));
         await upload.promise;
         path = upload.path;
-        size = file.size;
+        size = file.size + (await uploadThumb(path, await poster));
       }
       const outcome = await addMediaFileAction({
         locale,

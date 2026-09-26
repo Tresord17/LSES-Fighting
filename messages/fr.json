@@ -54,7 +54,8 @@
       "all": "Tous"
     },
     "news": {
-      "title": "Actualités"
+      "title": "Actualités",
+      "all": "Toutes"
     },
     "cta": {
       "title": "Athlète ou coach ?",
@@ -794,5 +795,90 @@
         "erreur": "La suppression a échoué. Réessayez."
       }
     }
+  },
+  "discipline": {
+    "eyebrow": "Discipline",
+    "sambo": {
+      "tagline": "Самбо — « self-défense sans arme »",
+      "intro1": "Élaboré en Union soviétique dans les années 1920 et 1930, puis reconnu comme sport en 1938, le sambo puise dans la lutte, le judo et les luttes traditionnelles des peuples de l'URSS. Son nom est l'acronyme russe de « self-défense sans arme ». Il se pratique en kurtka, une veste courte à ceinture, avec un short et des chaussons de lutte.",
+      "intro2": "On en distingue deux formes. Le sambo sportif interdit les frappes et les étranglements : il récompense la projection nette, le contrôle au sol et les clés de bras et de jambes. Le sambo combat autorise en plus la percussion et les étranglements, ce qui en fait une passerelle naturelle vers les arts martiaux mixtes.",
+      "meta": "Découvrir le sambo : origines, sambo sportif et sambo combat, galerie de photos et de vidéos, et où le pratiquer au Cameroun.",
+      "facts": {
+        "f1": {
+          "label": "Origine",
+          "value": "URSS, 1938"
+        },
+        "f2": {
+          "label": "Formes",
+          "value": "Sportif / Combat"
+        },
+        "f3": {
+          "label": "Tenue",
+          "value": "Kurtka"
+        },
+        "f4": {
+          "label": "Couleurs",
+          "value": "Rouge ou bleu"
+        }
+      }
+    },
+    "mma": {
+      "tagline": "Arts martiaux mixtes",
+      "intro1": "Les arts martiaux mixtes réunissent les techniques de percussion (boxe, kickboxing, muay-thaï) et de préhension (lutte, judo, jiu-jitsu brésilien, sambo). Le combat se déroule debout comme au sol, dans une cage ou sur un ring, et se gagne par KO, par soumission ou à la décision des juges.",
+      "intro2": "Popularisé dans les années 1990, le MMA s'est doté de règles communes qui encadrent la sécurité des combattants : gants ouverts, catégories de poids, reprises chronométrées, coups interdits et suivi médical. Il se pratique en amateur comme en professionnel.",
+      "meta": "Découvrir le MMA : principes, règles et sécurité, galerie de photos et de vidéos, et où le pratiquer au Cameroun.",
+      "facts": {
+        "f1": {
+          "label": "Essor",
+          "value": "Années 1990"
+        },
+        "f2": {
+          "label": "Formes",
+          "value": "Amateur / Pro"
+        },
+        "f3": {
+          "label": "Tenue",
+          "value": "Gants ouverts"
+        },
+        "f4": {
+          "label": "Aire",
+          "value": "Cage ou ring"
+        }
+      }
+    },
+    "facts": "Repères",
+    "gallery": {
+      "images": "En images",
+      "videos": "En vidéo",
+      "more": "Afficher les {count} autres images",
+      "moreVideos": "{count, plural, one {Voir l'autre vidéo} other {Voir les # autres vidéos}}",
+      "open": "Agrandir : {title}",
+      "play": "Lire la vidéo : {title}",
+      "position": "{index} / {count}",
+      "close": "Fermer",
+      "previous": "Image précédente",
+      "next": "Image suivante",
+      "dataNote": "Le lecteur ne se charge qu'au clic, pour ménager le forfait de données.",
+      "empty": "Photos et vidéos arrivent bientôt."
+    },
+    "practice": {
+      "title": "Où pratiquer ?",
+      "none": "Les premiers coachs sont en cours de référencement.",
+      "some": "{count, plural, one {Un coach référencé} other {# coachs référencés}} à {cities}.",
+      "otherCities": "{count, plural, one {une autre ville} other {# autres villes}}",
+      "coaches": "Voir les coachs",
+      "athletes": "Les athlètes",
+      "count": "{count, plural, one {Un coach référencé.} other {# coachs référencés.}}"
+    }
+  },
+  "news": {
+    "eyebrow": "Sambo · MMA · Cameroun",
+    "title": "Actualités",
+    "intro": "Compétitions, stages et vie des dojos : les nouvelles du sambo et du MMA au Cameroun.",
+    "empty": "Aucune actualité publiée pour l'instant.",
+    "back": "Toutes les actualités",
+    "frenchOnly": "Cet article n'existe qu'en français.",
+    "share": "Partager l'article",
+    "more": "À lire aussi"
   }
 }

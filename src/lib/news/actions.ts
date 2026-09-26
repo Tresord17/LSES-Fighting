@@ -7,7 +7,7 @@ import { getSupabaseEnv } from "@/lib/supabase/env";
 import { getDbErrorKey } from "@/lib/supabase/errors";
 import { fieldErrors, type FieldErrors } from "@/lib/auth/schemas";
 import type { Locale } from "@/i18n/routing";
-import { MEDIA_BUCKET } from "@/lib/media/options";
+import { MEDIA_BUCKET, thumbPath } from "@/lib/media/options";
 import { newsIdSchema, newsSchema, slugify } from "./schemas";
 
 // Actualités : rédaction, publication, retrait et suppression, réservées
@@ -106,7 +106,9 @@ export async function saveNewsAction(
   }
 
   if (current?.cover_path && current.cover_path !== cover_path) {
-    await supabase.storage.from(MEDIA_BUCKET).remove([current.cover_path]);
+    await supabase.storage
+      .from(MEDIA_BUCKET)
+      .remove([current.cover_path, thumbPath(current.cover_path)]);
   }
   refresh(locale);
 
@@ -129,7 +131,9 @@ export async function deleteNewsAction(formData: FormData) {
     .eq("id", parsed.data.id)
     .maybeSingle();
   const { error } = await supabase.from("news").delete().eq("id", parsed.data.id);
-  if (!error && row?.cover_path) await supabase.storage.from(MEDIA_BUCKET).remove([row.cover_path]);
+  if (!error && row?.cover_path) {
+    await supabase.storage.from(MEDIA_BUCKET).remove([row.cover_path, thumbPath(row.cover_path)]);
+  }
 
   refresh(parsed.data.locale);
   redirect(

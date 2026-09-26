@@ -367,3 +367,32 @@ export const getCoach = cache(async (slug: string): Promise<CoachDetail | null> 
     roster: roster.map((athlete) => toAthleteCard(athlete, titles)),
   };
 });
+
+// Coachs en ligne qui enseignent une discipline, et leurs villes (de la plus
+// représentée à la moins représentée), pour l'encart « Où pratiquer ? »
+export const practiceSummary = cache(
+  async (discipline: Discipline): Promise<{ count: number; cities: string[] }> => {
+    const supabase = createPublicClient();
+    if (!supabase) return { count: 0, cities: [] };
+    const { data, error } = await supabase
+      .from("coaches")
+      .select("city")
+      .eq("status", "approved")
+      .contains("disciplines", [discipline]);
+    if (error) throw error;
+
+    const cities = new Map<string, { name: string; count: number }>();
+    for (const { city } of data ?? []) {
+      const name = city?.trim();
+      if (!name) continue;
+      const key = name.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase();
+      const entry = cities.get(key) ?? { name, count: 0 };
+      entry.count += 1;
+      cities.set(key, entry);
+    }
+    return {
+      count: data?.length ?? 0,
+      cities: [...cities.values()].sort((a, b) => b.count - a.count).map((entry) => entry.name),
+    };
+  },
+);

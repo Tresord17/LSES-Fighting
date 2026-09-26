@@ -54,7 +54,8 @@
       "all": "All"
     },
     "news": {
-      "title": "News"
+      "title": "News",
+      "all": "All"
     },
     "cta": {
       "title": "Athlete or coach?",
@@ -794,5 +795,90 @@
         "erreur": "Deletion failed. Please try again."
       }
     }
+  },
+  "discipline": {
+    "eyebrow": "Discipline",
+    "sambo": {
+      "tagline": "Самбо — “self-defence without weapons”",
+      "intro1": "Developed in the Soviet Union in the 1920s and 1930s and recognised as a sport in 1938, sambo draws on wrestling, judo and the traditional wrestling styles of the peoples of the USSR. Its name is the Russian acronym for “self-defence without weapons”. It is practised in a kurtka, a short belted jacket, with shorts and wrestling shoes.",
+      "intro2": "There are two forms. Sport sambo forbids strikes and chokes: it rewards clean throws, ground control and arm and leg locks. Combat sambo also allows strikes and chokes, which makes it a natural bridge to mixed martial arts.",
+      "meta": "Discover sambo: its origins, sport and combat sambo, a photo and video gallery, and where to train in Cameroon.",
+      "facts": {
+        "f1": {
+          "label": "Origin",
+          "value": "USSR, 1938"
+        },
+        "f2": {
+          "label": "Forms",
+          "value": "Sport / Combat"
+        },
+        "f3": {
+          "label": "Outfit",
+          "value": "Kurtka"
+        },
+        "f4": {
+          "label": "Colours",
+          "value": "Red or blue"
+        }
+      }
+    },
+    "mma": {
+      "tagline": "Mixed martial arts",
+      "intro1": "Mixed martial arts bring together striking (boxing, kickboxing, muay thai) and grappling (wrestling, judo, Brazilian jiu-jitsu, sambo). Fights take place standing and on the ground, in a cage or a ring, and are won by knockout, submission or the judges' decision.",
+      "intro2": "Popularised in the 1990s, MMA adopted common rules that protect fighters: open-fingered gloves, weight classes, timed rounds, banned strikes and medical supervision. It is practised at both amateur and professional level.",
+      "meta": "Discover MMA: principles, rules and safety, a photo and video gallery, and where to train in Cameroon.",
+      "facts": {
+        "f1": {
+          "label": "Rise",
+          "value": "1990s"
+        },
+        "f2": {
+          "label": "Forms",
+          "value": "Amateur / Pro"
+        },
+        "f3": {
+          "label": "Outfit",
+          "value": "Open gloves"
+        },
+        "f4": {
+          "label": "Area",
+          "value": "Cage or ring"
+        }
+      }
+    },
+    "facts": "Key facts",
+    "gallery": {
+      "images": "In pictures",
+      "videos": "On video",
+      "more": "Show the {count} other pictures",
+      "moreVideos": "{count, plural, one {Show the other video} other {Show the # other videos}}",
+      "open": "Enlarge: {title}",
+      "play": "Play the video: {title}",
+      "position": "{index} / {count}",
+      "close": "Close",
+      "previous": "Previous picture",
+      "next": "Next picture",
+      "dataNote": "The player only loads when you click, to save your mobile data.",
+      "empty": "Photos and videos are coming soon."
+    },
+    "practice": {
+      "title": "Where to train?",
+      "none": "The first coaches are being listed.",
+      "some": "{count, plural, one {One listed coach} other {# listed coaches}} in {cities}.",
+      "otherCities": "{count, plural, one {one other city} other {# other cities}}",
+      "coaches": "See the coaches",
+      "athletes": "The athletes",
+      "count": "{count, plural, one {One listed coach.} other {# listed coaches.}}"
+    }
+  },
+  "news": {
+    "eyebrow": "Sambo · MMA · Cameroon",
+    "title": "News",
+    "intro": "Competitions, training camps and dojo life: news from sambo and MMA in Cameroon.",
+    "empty": "No news published yet.",
+    "back": "All news",
+    "frenchOnly": "This article is only available in French.",
+    "share": "Share this article",
+    "more": "Read also"
   }
 }

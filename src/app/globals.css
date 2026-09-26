@@ -120,6 +120,11 @@
     color: var(--foreground);
   }
 
+  /* Page figée derrière une fenêtre modale (agrandissement d'une image) */
+  html:has(dialog[open]:modal) {
+    overflow: hidden;
+  }
+
   :focus-visible {
     outline: 2px solid var(--gold);
     outline-offset: 2px;
