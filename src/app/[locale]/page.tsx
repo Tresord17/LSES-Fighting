@@ -1,4 +1,5 @@
 import { Hero } from "@/components/home/Hero";
+import { Ticker } from "@/components/home/Ticker";
 import { Disciplines } from "@/components/home/Disciplines";
 import { FeaturedAthletes } from "@/components/home/FeaturedAthletes";
 import { LatestNews } from "@/components/home/LatestNews";
@@ -11,6 +12,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <Ticker />
       <Disciplines />
       <FeaturedAthletes />
       <LatestNews />

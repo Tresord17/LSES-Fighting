@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { AccountNav } from "@/components/account/AccountNav";
+import { NotificationBell } from "@/components/account/NotificationBell";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { MainNavLinks } from "./MainNavLinks";
 import { MobileMenu } from "./MobileMenu";
@@ -11,7 +12,14 @@ export function SiteHeader() {
   const t = useTranslations();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-background">
+    <header className="sticky top-0 z-50 header-shade border-b border-line">
+      {/* Fond translucide et flou sur un calque à part : posé sur l'en-tête
+          lui-même, le flou ferait de lui le cadre des éléments « fixed » et
+          enfermerait le menu mobile dans ses 60 px. */}
+      <span
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-background/90 backdrop-blur-md"
+      />
       <div className="mx-auto flex h-15 max-w-6xl items-center justify-between gap-6 px-4">
         <Link href="/" aria-label={t("a11y.home")}>
           <Wordmark />
@@ -22,9 +30,11 @@ export function SiteHeader() {
           <MainNavLinks />
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 lg:gap-3">
           <LanguageSwitcher />
-          <ThemeSwitcher variant="compact" className="hidden lg:flex" />
+          <ThemeSwitcher variant="compact" withSystem={false} className="hidden lg:flex" />
+          {/* Coachs référencés et superviseur : éléments à traiter */}
+          <NotificationBell />
           <div className="hidden items-center gap-3 lg:flex">
             <AccountNav variant="header" />
           </div>

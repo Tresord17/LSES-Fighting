@@ -52,14 +52,19 @@ export function MobileMenu() {
       {open && (
         <div
           id="menu-mobile"
-          className="fixed inset-x-0 top-15 bottom-0 z-40 overflow-y-auto border-t border-line bg-background px-4 pt-6 pb-10"
+          className="fixed inset-x-0 top-15 bottom-0 z-40 animate-fade overflow-y-auto border-t border-line bg-background px-4 pt-6 pb-10 [animation-duration:0.25s]"
         >
           <nav aria-label={t("a11y.mainNav")}>
             <ul className="flex flex-col">
-              {NAV_ITEMS.map((item) => {
+              {NAV_ITEMS.map((item, index) => {
                 const active = isActivePath(pathname, item.href);
                 return (
-                  <li key={item.href} className="border-b border-line">
+                  // les rubriques arrivent l'une après l'autre
+                  <li
+                    key={item.href}
+                    className="animate-rise border-b border-line"
+                    style={{ animationDelay: `${60 + index * 45}ms` }}
+                  >
                     <Link
                       href={item.href}
                       onClick={() => setOpen(false)}
@@ -83,7 +88,7 @@ export function MobileMenu() {
 
           <div className="mt-8 flex flex-col gap-3">
             <span className="eyebrow text-muted">{t("theme.label")}</span>
-            <ThemeSwitcher />
+            <ThemeSwitcher withSystem={false} />
           </div>
         </div>
       )}

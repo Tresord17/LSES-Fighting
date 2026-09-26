@@ -68,14 +68,19 @@ export function VideoList({ videos }: { videos: GalleryVideo[] }) {
                 {video.thumbnailUrl && (
                   <Thumb
                     src={video.thumbnailUrl}
-                    className="absolute inset-0 h-full w-full object-cover"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 )}
                 <span
                   aria-hidden="true"
                   className="absolute inset-x-0 bottom-0 h-2/5 bg-linear-to-t from-black/75 to-transparent"
                 />
-                <span className="relative flex h-14 w-14 items-center justify-center bg-gold transition group-hover:brightness-110">
+                {/* Bouton de lecture : onde dorée et léger grossissement au survol */}
+                <span
+                  aria-hidden="true"
+                  className="absolute h-14 w-14 border border-gold opacity-0 group-hover:animate-ping group-hover:opacity-60"
+                />
+                <span className="relative flex h-14 w-14 items-center justify-center bg-gold transition duration-300 group-hover:scale-110 group-hover:brightness-110">
                   <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 fill-on-gold">
                     <path d="M8 5l12 7-12 7z" />
                   </svg>

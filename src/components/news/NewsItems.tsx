@@ -19,14 +19,14 @@ export async function NewsDate({ iso, gold = false }: { iso: string; gold?: bool
 // Ligne d'actualité : vignette, titre et date (accueil, liste, « À lire aussi »)
 export function NewsRow({ item, excerpt = false }: { item: PublicNews; excerpt?: boolean }) {
   return (
-    <li className="bg-background">
+    <li className="reveal bg-background">
       <Link href={`/actualites/${item.slug}`} className="group flex items-start gap-3 py-3.5">
         <span className="relative h-16.5 w-22 shrink-0 overflow-hidden hatch md:h-24 md:w-32">
           {item.coverThumbUrl && (
             <Thumb
               src={item.coverThumbUrl}
               fallback={item.coverUrl}
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
           )}
         </span>
@@ -57,7 +57,7 @@ export function FeaturedNews({ item }: { item: PublicNews }) {
   return (
     <Link
       href={`/actualites/${item.slug}`}
-      className="group flex flex-col gap-4 md:grid md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] md:items-center md:gap-10"
+      className="group flex animate-rise flex-col gap-4 [animation-delay:0.2s] md:grid md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] md:items-center md:gap-10"
     >
       <span className="relative block aspect-video overflow-hidden border-b-2 border-gold hatch">
         {item.coverThumbUrl && item.coverUrl && (
@@ -67,7 +67,7 @@ export function FeaturedNews({ item }: { item: PublicNews }) {
             sizes="(min-width: 768px) 60vw, 100vw"
             fallback={item.coverUrl}
             loading="eager"
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
           />
         )}
       </span>

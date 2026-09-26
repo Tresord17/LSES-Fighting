@@ -30,12 +30,22 @@ function applyTheme(preference: ThemePreference) {
 }
 
 function subscribe(onChange: () => void) {
+  const media = window.matchMedia(DARK_QUERY);
   window.addEventListener("storage", onChange);
   window.addEventListener(THEME_CHANGE_EVENT, onChange);
+  media.addEventListener("change", onChange);
   return () => {
     window.removeEventListener("storage", onChange);
     window.removeEventListener(THEME_CHANGE_EVENT, onChange);
+    media.removeEventListener("change", onChange);
   };
+}
+
+// Thème réellement affiché, y compris quand « Système » décide
+function readResolved(): "light" | "dark" {
+  const preference = readPreference();
+  if (preference !== "system") return preference;
+  return window.matchMedia(DARK_QUERY).matches ? "dark" : "light";
 }
 
 const OPTIONS = [
@@ -47,14 +57,18 @@ const OPTIONS = [
 type Props = {
   /** "full" : icône + libellé (menu, pied de page). "compact" : icône seule (en-tête bureau). */
   variant?: "full" | "compact";
+  /** Sans « Système » (en-tête et menu) : ce réglage n'est proposé qu'en pied de page. */
+  withSystem?: boolean;
   className?: string;
 };
 
-export function ThemeSwitcher({ variant = "full", className = "" }: Props) {
+export function ThemeSwitcher({ variant = "full", withSystem = true, className = "" }: Props) {
   const t = useTranslations("theme");
   // Côté serveur la préférence est inconnue : aucun bouton n'est coché
   // tant que le navigateur n'a pas pris le relais.
   const preference = useSyncExternalStore(subscribe, readPreference, () => null);
+  const resolved = useSyncExternalStore(subscribe, readResolved, () => null);
+  const options = withSystem ? OPTIONS : OPTIONS.filter((option) => option.value !== "system");
 
   // Filet de sécurité : pour les pages 404, Next.js rend la page côté client
   // et le script du <head> ne s'exécute pas. On applique alors le thème ici.
@@ -89,8 +103,9 @@ export function ThemeSwitcher({ variant = "full", className = "" }: Props) {
       aria-label={t("label")}
       className={`flex gap-px border border-line bg-line ${className}`}
     >
-      {OPTIONS.map(({ value, Icon }) => {
-        const active = preference === value;
+      {options.map(({ value, Icon }) => {
+        // sans « Système », le bouton du thème affiché reste coché
+        const active = withSystem ? preference === value : resolved === value;
         return (
           <button
             key={value}

@@ -68,7 +68,7 @@ export default async function ArticlePage({ params }: PageProps<"/[locale]/actua
         ← {t("back")}
       </Link>
 
-      <header className="flex flex-col gap-3">
+      <header className="flex animate-rise flex-col gap-3">
         <NewsDate iso={article.publishedAt} gold />
         <h1
           lang={textLang}
@@ -89,7 +89,7 @@ export default async function ArticlePage({ params }: PageProps<"/[locale]/actua
       </header>
 
       {article.coverThumbUrl && article.coverUrl && (
-        <div className="-mx-4 aspect-video overflow-hidden border-b-2 border-gold hatch md:mx-0">
+        <div className="-mx-4 aspect-video reveal overflow-hidden border-b-2 border-gold hatch md:mx-0">
           <Thumb
             src={article.coverThumbUrl}
             srcSet={`${article.coverThumbUrl} 640w, ${article.coverUrl} 1600w`}

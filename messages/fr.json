@@ -38,7 +38,7 @@
   "home": {
     "hero": {
       "eyebrow": "Sambo · MMA · Cameroun",
-      "title": "La sueur épargne le sang",
+      "title": "La sueur épargne <gold>le sang</gold>",
       "lead": "Les athlètes, les coachs et les dojos qui font vivre le sambo et le MMA au Cameroun.",
       "primary": "Découvrir les disciplines",
       "secondary": "Rejoindre",
@@ -89,6 +89,15 @@
         "title": "Bon retour",
         "text": "Retrouvez votre fiche et vos demandes dans votre espace."
       }
+    },
+    "ticker": {
+      "w1": "Sambo",
+      "w2": "MMA",
+      "w3": "La sueur épargne le sang",
+      "w4": "Cameroun",
+      "w5": "Athlètes",
+      "w6": "Coachs",
+      "w7": "Dojos"
     }
   },
   "footer": {
@@ -880,5 +889,27 @@
     "frenchOnly": "Cet article n'existe qu'en français.",
     "share": "Partager l'article",
     "more": "À lire aussi"
+  },
+  "notifications": {
+    "label": "Notifications",
+    "button": "{count, plural, =0 {Notifications, rien à traiter} one {Notifications, # élément à traiter} other {Notifications, # éléments à traiter}}",
+    "title": "À traiter",
+    "empty": "Rien à traiter pour l'instant.",
+    "all": "Tout voir",
+    "more": "{count, plural, one {et # autre} other {et # autres}}",
+    "groups": {
+      "coachAccounts": "Comptes de coach à valider",
+      "escalated": "Demandes escaladées",
+      "athletes": "Fiches d'athlètes à valider",
+      "palmares": "Palmarès à vérifier",
+      "modified": "Fiches modifiées à revoir"
+    },
+    "meta": {
+      "due": "{days, plural, =0 {Échéance aujourd'hui} one {# jour restant} other {# jours restants}}",
+      "escalated": "Escaladée",
+      "since": "Depuis le {date}",
+      "modified": "Modifiée le {date}",
+      "modifiedShort": "Modifiée"
+    }
   }
 }

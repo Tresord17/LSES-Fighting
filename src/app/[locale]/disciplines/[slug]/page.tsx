@@ -97,18 +97,27 @@ export default async function DisciplinePage({
   return (
     <>
       {/* Bandeau */}
-      <section className="flex h-70 items-end border-b-2 border-gold hatch md:h-80">
+      <section className="grain relative flex h-70 items-end overflow-hidden border-b-2 border-gold hatch md:h-80">
+        {/* Nom en filigrane, qui glisse quand la page défile */}
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute top-1/2 -right-[4vw] -translate-y-1/2 drift font-display text-[38vw] leading-none font-extrabold whitespace-nowrap text-outline uppercase opacity-30 select-none md:text-[22vw]"
+        >
+          {NAMES[slug]}
+        </span>
         <div className="relative w-full">
           <div
             aria-hidden="true"
             className="absolute inset-x-0 bottom-0 h-47.5 bg-linear-to-b from-[rgb(var(--hero-fade)/0)] via-[rgb(var(--hero-fade)/0.9)] via-60% to-background"
           />
           <div className="relative mx-auto flex max-w-6xl flex-col gap-2 px-4 pb-5 md:pb-10">
-            <p className="eyebrow text-gold-ink">{t("eyebrow")}</p>
-            <h1 className="font-display text-[54px] leading-[0.9] font-extrabold uppercase md:text-7xl">
+            <p className="animate-rise eyebrow text-gold-ink">{t("eyebrow")}</p>
+            <h1 className="animate-rise font-display text-[54px] leading-[0.9] font-extrabold uppercase [animation-delay:0.1s] md:text-7xl">
               {NAMES[slug]}
             </h1>
-            <p className="text-[13px] text-muted md:text-base">{t(`${slug}.tagline`)}</p>
+            <p className="animate-rise text-[13px] text-muted [animation-delay:0.2s] md:text-base">
+              {t(`${slug}.tagline`)}
+            </p>
           </div>
         </div>
       </section>
@@ -116,7 +125,7 @@ export default async function DisciplinePage({
       <div className="mx-auto flex max-w-6xl flex-col gap-6.5 px-4 pt-6.5 pb-8 md:gap-12 md:pt-12 md:pb-16">
         {/* Présentation et repères */}
         <div className="flex flex-col gap-5.5 md:grid md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] md:gap-12">
-          <div className="flex max-w-prose flex-col gap-3.5 text-[15px] leading-[1.7] text-foreground/90 md:text-base">
+          <div className="flex max-w-prose reveal flex-col gap-3.5 text-[15px] leading-[1.7] text-foreground/90 md:text-base">
             <p>{t(`${slug}.intro1`)}</p>
             <p>{t(`${slug}.intro2`)}</p>
           </div>
@@ -125,7 +134,10 @@ export default async function DisciplinePage({
             className="grid grid-cols-2 gap-px self-start border border-line bg-line"
           >
             {FACTS.map((fact) => (
-              <div key={fact} className="flex flex-col gap-1.25 bg-surface p-3.5">
+              <div
+                key={fact}
+                className="flex reveal flex-col gap-1.25 bg-surface p-3.5 transition-colors duration-300 hover:bg-line/40"
+              >
                 <dt className="font-mono text-[9px] tracking-[0.14em] text-subtle uppercase">
                   {t(`${slug}.facts.${fact}.label`)}
                 </dt>
@@ -139,7 +151,7 @@ export default async function DisciplinePage({
 
         {/* Galerie */}
         {images.length > 0 && (
-          <section className="flex flex-col gap-3.5">
+          <section className="flex reveal flex-col gap-3.5">
             <SectionTitle
               action={<span className="font-mono text-[10px] text-subtle">{images.length}</span>}
             >
@@ -150,7 +162,7 @@ export default async function DisciplinePage({
         )}
 
         {videos.length > 0 && (
-          <section className="flex flex-col gap-3.5">
+          <section className="flex reveal flex-col gap-3.5">
             <SectionTitle>{t("gallery.videos")}</SectionTitle>
             <VideoList videos={videos} />
             <p className="font-mono text-[9.5px] leading-relaxed text-subtle uppercase">
@@ -166,7 +178,7 @@ export default async function DisciplinePage({
         )}
 
         {/* Passerelle vers les répertoires */}
-        <section className="flex flex-col gap-3 border-l-3 border-gold bg-surface px-5 py-6 md:flex-row md:items-center md:justify-between md:gap-10 md:px-10 md:py-9">
+        <section className="grain flex reveal flex-col gap-3 border-l-3 border-gold bg-surface px-5 py-6 md:flex-row md:items-center md:justify-between md:gap-10 md:px-10 md:py-9">
           <div className="flex flex-col gap-3">
             <h2 className="font-display text-[26px] leading-[1.05] font-bold uppercase md:text-4xl">
               {t("practice.title")}

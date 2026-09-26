@@ -38,7 +38,7 @@
   "home": {
     "hero": {
       "eyebrow": "Sambo · MMA · Cameroon",
-      "title": "La sueur épargne le sang",
+      "title": "La sueur épargne <gold>le sang</gold>",
       "lead": "The athletes, coaches and dojos keeping sambo and MMA alive in Cameroon.",
       "primary": "Explore the disciplines",
       "secondary": "Join",
@@ -89,6 +89,15 @@
         "title": "Welcome back",
         "text": "Find your profile and your requests in your account."
       }
+    },
+    "ticker": {
+      "w1": "Sambo",
+      "w2": "MMA",
+      "w3": "La sueur épargne le sang",
+      "w4": "Cameroon",
+      "w5": "Athletes",
+      "w6": "Coaches",
+      "w7": "Dojos"
     }
   },
   "footer": {
@@ -880,5 +889,27 @@
     "frenchOnly": "This article is only available in French.",
     "share": "Share this article",
     "more": "Read also"
+  },
+  "notifications": {
+    "label": "Notifications",
+    "button": "{count, plural, =0 {Notifications, nothing to review} one {Notifications, # item to review} other {Notifications, # items to review}}",
+    "title": "To review",
+    "empty": "Nothing to review for now.",
+    "all": "See all",
+    "more": "{count, plural, one {and # more} other {and # more}}",
+    "groups": {
+      "coachAccounts": "Coach accounts to approve",
+      "escalated": "Escalated requests",
+      "athletes": "Athlete profiles to approve",
+      "palmares": "Records to check",
+      "modified": "Edited profiles to review"
+    },
+    "meta": {
+      "due": "{days, plural, =0 {Due today} one {# day left} other {# days left}}",
+      "escalated": "Escalated",
+      "since": "Since {date}",
+      "modified": "Edited {date}",
+      "modifiedShort": "Edited"
+    }
   }
 }

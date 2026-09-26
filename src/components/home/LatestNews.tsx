@@ -12,7 +12,7 @@ export async function LatestNews() {
   if (news.length === 0) return null;
 
   return (
-    <section className="mx-auto max-w-6xl px-4 pb-7 md:pb-14">
+    <section className="mx-auto max-w-6xl reveal px-4 pb-7 md:pb-14">
       <div className="flex flex-col gap-3.5">
         <SectionTitle
           action={

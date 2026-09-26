@@ -55,12 +55,17 @@ function ResultLink({
   lines: ReactNode;
 }) {
   return (
-    <li>
+    <li className="reveal">
       <Link
         href={href}
-        className="group flex h-full items-center gap-3.25 border-l-3 border-gold bg-surface p-3 transition-colors hover:bg-line/40"
+        className="group flex h-full items-center gap-3.25 border-l-3 border-gold bg-surface p-3 transition-[background-color,translate] duration-300 hover:bg-line/40 md:hover:-translate-y-0.5"
       >
-        <Portrait url={photoUrl} className="h-19.5 w-19.5" />
+        <span className="shrink-0 overflow-hidden">
+          <Portrait
+            url={photoUrl}
+            className="h-19.5 w-19.5 transition-transform duration-500 group-hover:scale-105"
+          />
+        </span>
         <span className="flex min-w-0 grow flex-col gap-1.25">
           <span className="font-display text-xl leading-[1.05] font-bold uppercase">{name}</span>
           {lines}

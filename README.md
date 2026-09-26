@@ -139,8 +139,10 @@ src/
   components/supervisor/ Espace superviseur (comptes de coach, retraits, médias, actualités, journal)
   components/directory/ Répertoires publics (filtres, cartes) et fiches athlète et coach
   app/api/photos/    Photos des fiches en ligne, à une adresse stable pour le partage
+  app/api/notifications/ Compteurs de la cloche (réponse propre au compte, sans cache)
   lib/
     auth/            Actions serveur d'authentification, validation, redirections sûres
+    notifications/   Éléments à traiter pour la cloche des coachs et du superviseur
     account/         Étape du compte connecté (boutons « Rejoindre » de l'accueil)
     profile/         Actions serveur du profil, validation, catégories de poids
     review/          Lecture de la file de vérification, décisions des coachs
@@ -157,7 +159,7 @@ supabase/
   tests/             Scénarios de sécurité exécutables dans le SQL Editor
   sql/               Scripts d'administration (promotion du superviseur)
   templates/         Modèles des e-mails de confirmation et de mot de passe oublié
-docs/                Documentation technique (base, authentification, profil, vérification, répertoires, superviseur, vitrine)
+docs/                Documentation technique (base, authentification, profil, vérification, répertoires, superviseur, vitrine, interface)
 ```
 
 ## 9. Conventions

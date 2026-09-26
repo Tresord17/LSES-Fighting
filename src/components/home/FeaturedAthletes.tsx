@@ -13,7 +13,7 @@ export async function FeaturedAthletes() {
   const athletes = await latestAthletes(4);
 
   return (
-    <section className="mx-auto max-w-6xl pb-7 md:pb-14">
+    <section className="mx-auto max-w-6xl reveal pb-7 md:pb-14">
       <div className="flex flex-col gap-3.5">
         <div className="px-4">
           <SectionTitle
@@ -40,17 +40,19 @@ export async function FeaturedAthletes() {
             {athletes.map((athlete) => (
               <li
                 key={athlete.slug}
-                className="w-36.5 shrink-0 snap-start border-t-2 border-gold bg-surface md:w-auto"
+                className="w-36.5 shrink-0 snap-start border-t-2 border-gold bg-surface transition-transform duration-300 md:w-auto md:hover:-translate-y-1"
               >
                 <Link href={`/athletes/${athlete.slug}`} className="group flex h-full flex-col">
                   {athlete.photoUrl ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={athlete.photoUrl}
-                      alt=""
-                      loading="lazy"
-                      className="h-37.5 w-full object-cover object-top md:h-56"
-                    />
+                    <span className="block overflow-hidden">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={athlete.photoUrl}
+                        alt=""
+                        loading="lazy"
+                        className="h-37.5 w-full object-cover object-top transition-transform duration-500 group-hover:scale-105 md:h-56"
+                      />
+                    </span>
                   ) : (
                     <span aria-hidden="true" className="block h-37.5 hatch md:h-56" />
                   )}

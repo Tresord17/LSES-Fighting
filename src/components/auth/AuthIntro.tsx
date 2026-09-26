@@ -10,11 +10,15 @@ export function AuthIntro({
 }) {
   return (
     <div className="flex flex-col gap-2.5">
-      <p className="eyebrow tracking-[0.16em] text-gold-ink">{eyebrow}</p>
-      <h1 className="font-display text-4xl leading-[0.98] font-extrabold text-balance uppercase md:text-5xl">
+      <p className="animate-rise eyebrow tracking-[0.16em] text-gold-ink">{eyebrow}</p>
+      <h1 className="animate-rise font-display text-4xl leading-[0.98] font-extrabold text-balance uppercase [animation-delay:0.08s] md:text-5xl">
         {title}
       </h1>
-      {lead && <p className="text-[13px] leading-relaxed text-muted md:text-sm">{lead}</p>}
+      {lead && (
+        <p className="animate-rise text-[13px] leading-relaxed text-muted [animation-delay:0.16s] md:text-sm">
+          {lead}
+        </p>
+      )}
     </div>
   );
 }

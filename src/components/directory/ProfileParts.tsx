@@ -27,7 +27,7 @@ export function ProfileHero({
         <img
           src={photoUrl}
           alt={photoAlt}
-          className="absolute inset-0 h-full w-full object-cover object-top"
+          className="absolute inset-0 h-full w-full origin-top animate-[portrait_1.8s_var(--ease-out-expo)_both] object-cover object-top"
         />
       ) : (
         <span aria-hidden="true" className="absolute inset-0 hatch" />
@@ -37,20 +37,20 @@ export function ProfileHero({
         className="absolute inset-x-0 bottom-0 h-55 bg-linear-to-b from-background/0 via-background/90 via-60% to-background"
       />
 
-      <p className="absolute top-4 left-4 flex items-center gap-1.5 border border-success bg-background/75 px-2.25 py-1.25 font-mono text-[9px] tracking-[0.14em] text-success uppercase">
+      <p className="absolute top-4 left-4 flex animate-pop items-center gap-1.5 border border-success bg-background/75 px-2.25 py-1.25 font-mono text-[9px] tracking-[0.14em] text-success uppercase [animation-delay:0.5s]">
         <CheckIcon className="h-3 w-3" strokeWidth={3} />
         {badge}
       </p>
 
       <div className="relative flex flex-col gap-2.5 px-4 pb-4.5 md:px-6 md:pb-6">
-        <p className="eyebrow text-gold-ink">{eyebrow}</p>
-        <h1 className="font-display text-[40px] leading-[0.95] font-extrabold uppercase md:text-5xl">
+        <p className="animate-rise eyebrow text-gold-ink">{eyebrow}</p>
+        <h1 className="animate-rise font-display text-[40px] leading-[0.95] font-extrabold uppercase [animation-delay:0.1s] md:text-5xl">
           {lastName}
           <br />
           {firstNames}
         </h1>
         {chips.length > 0 && (
-          <ul className="mt-0.5 flex flex-wrap gap-2">
+          <ul className="mt-0.5 flex animate-rise flex-wrap gap-2 [animation-delay:0.2s]">
             {chips.map((chip) => (
               <li
                 key={chip.label}
@@ -111,7 +111,7 @@ export function ProfileSection({
     <section className="flex flex-col gap-3">
       <div className="flex items-center justify-between gap-3">
         <h2 className="flex items-center gap-2.5">
-          <span aria-hidden="true" className="h-0.5 w-5.5 bg-gold" />
+          <span aria-hidden="true" className="h-0.5 w-5.5 reveal-line bg-gold" />
           <span className="eyebrow text-muted">{title}</span>
         </h2>
         {aside && <span className="font-mono text-[10px] text-subtle uppercase">{aside}</span>}

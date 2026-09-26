@@ -66,8 +66,14 @@ export function ImageGallery({ images }: { images: GalleryImage[] }) {
                 <Thumb
                   src={item.thumbnailUrl}
                   fallback={item.url}
-                  className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.06]"
                 />
+                {!isMore && (
+                  // titre qui remonte au survol (souris seulement)
+                  <span className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-full bg-linear-to-t from-black/80 to-transparent px-2.5 pt-6 pb-2 text-left text-[11px] leading-snug text-white transition-transform duration-300 group-hover:translate-y-0">
+                    {item.title}
+                  </span>
+                )}
                 {isMore && (
                   <span className="absolute inset-0 flex items-center justify-center bg-background/72 font-display text-2xl font-bold">
                     +{hidden + 1}
@@ -91,7 +97,7 @@ export function ImageGallery({ images }: { images: GalleryImage[] }) {
           // clic sur le fond : fermeture
           if (event.target === event.currentTarget) setCurrent(null);
         }}
-        className="m-auto h-dvh max-h-none w-screen max-w-none bg-black/95 p-0 text-white backdrop:bg-black/80"
+        className="m-auto h-dvh max-h-none w-screen max-w-none bg-black/95 p-0 text-white dialog-anim backdrop:bg-black/80"
       >
         {image && current !== null && (
           <div
@@ -130,7 +136,7 @@ export function ImageGallery({ images }: { images: GalleryImage[] }) {
                 key={image.id}
                 src={image.url}
                 alt={image.title}
-                className="max-h-full max-w-full object-contain"
+                className="max-h-full max-w-full animate-fade object-contain"
               />
             </div>
             <div className="flex items-center gap-3 px-4 py-4">

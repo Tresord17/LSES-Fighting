@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { refreshNotifications } from "@/lib/notifications/events";
 import { FormAlert } from "./FormAlert";
 
 type Notice = { tone: "success" | "error"; text: string; at: number };
@@ -18,6 +19,8 @@ export function useNotice() {
 
   function announce(tone: Notice["tone"], text: string) {
     setNotice({ tone, text, at: Date.now() });
+    // une demande tranchée ou une fiche revue change le compteur de la cloche
+    if (tone === "success") refreshNotifications();
   }
 
   const region = (

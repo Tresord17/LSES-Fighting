@@ -19,10 +19,9 @@ export function MainNavLinks() {
             <Link
               href={item.href}
               aria-current={active ? "page" : undefined}
-              className={`relative py-1 transition-colors hover:text-foreground ${
-                active
-                  ? "text-foreground after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:bg-gold"
-                  : ""
+              // filet doré qui se trace de gauche à droite au survol
+              className={`relative py-1 transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:bg-gold after:transition-transform after:duration-300 after:ease-out hover:text-foreground hover:after:scale-x-100 ${
+                active ? "text-foreground after:scale-x-100" : "after:scale-x-0"
               }`}
             >
               {t(item.key)}
